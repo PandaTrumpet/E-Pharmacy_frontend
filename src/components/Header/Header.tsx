@@ -7,6 +7,7 @@ import market from "../../images/shopping-cart.png";
 import { useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
+import clsx from "clsx";
 const Header = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const handleToggle = () => {
@@ -75,12 +76,15 @@ const Header = () => {
             </button>
             <ul className={css.mobileMenuList}>
               <li>
-                <Link to="/" className={css.link}>
+                <Link to="/" className={clsx(css.link, css.first)}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/medicine-store" className={css.link}>
+                <Link
+                  to="/medicine-store"
+                  className={clsx(css.link, css.second)}
+                >
                   Medicine store
                 </Link>
               </li>
