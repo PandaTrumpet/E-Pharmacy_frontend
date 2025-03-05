@@ -4,9 +4,7 @@
     max-width: 375px;
     height: 812px;
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
+
     padding-top: 25px;
     padding-left: 20px;
     padding-right: 20px;
@@ -170,7 +168,6 @@
     .titleCont {
         width: 614px;
         margin-top: 168px;
-
         margin-bottom: 54px;
     }
 
@@ -185,6 +182,11 @@
         width: 179px;
         height: 175px;
         top: -106px;
+    }
+
+    .logo {
+        width: 44px;
+        height: 44px;
     }
 
     .logoCont {
@@ -209,13 +211,11 @@
     }
 
     .registerForm {
-
-        gap: 16px;
-
+        gap: 14px;
     }
 
     .registerForm button {
-        margin-top: 46px;
+
         width: 280px;
     }
 
@@ -230,6 +230,7 @@
     .registerBtnCont {
         width: 280px;
         align-items: flex-start;
+        margin-top: 48px;
 
     }
 

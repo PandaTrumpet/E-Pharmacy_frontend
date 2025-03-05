@@ -4,3 +4,8 @@ export interface IRegisterFormInput {
   password: string;
   phoneNumber: string;
 }
+
+export interface ILoginFormInput {
+  email: string;
+  password: string;
+}
