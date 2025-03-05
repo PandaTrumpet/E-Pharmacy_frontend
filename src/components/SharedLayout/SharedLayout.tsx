@@ -16,10 +16,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-
+import css from "./SharedLayout.module.css";
 const SharedLayout = () => {
   return (
-    <div>
+    <div className={css.layoutContainer}>
       <Header />
       <Outlet />
       <Footer />

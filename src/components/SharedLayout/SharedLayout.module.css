@@ -1,0 +1,11 @@
+.layoutContainer {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 375px;
+    height: 812px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

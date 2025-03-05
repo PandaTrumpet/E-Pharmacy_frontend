@@ -1,0 +1,174 @@
+.headerContainer {
+    /* margin: 0 auto;
+    width: 100%;
+    max-width: 375px;
+    height: 812px;
+    display: flex;
+
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px; */
+}
+
+.headerMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logoCont {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logoCont p {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
+    color: #1d1e21;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
+.navRegisteredElement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.marketIcion {
+    width: 16px;
+    height: 16px;
+}
+
+.marketIconCont {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 -1px 7px 0 rgba(71, 71, 71, 0.05);
+}
+
+.quantityShop {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: #e7f1ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -4px;
+    right: -1px;
+}
+
+.quantityShop p {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #59b17a;
+}
+
+.i {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: rgba(89, 177, 122, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.i p {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #59b17a;
+}
+
+.mobileMenuIcon {
+    border: none;
+    color: #59b17a;
+    background-color: transparent;
+    width: 32px;
+    height: 40px;
+
+}
+
+.mobileClose {
+    background-color: transparent;
+    width: 32px;
+    border: none;
+    height: 40px;
+
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+
+}
+
+.darkTileMobile {
+    width: 44%;
+    background: rgba(29, 30, 33, 0.45);
+}
+
+.mainTileMobile {
+    width: 56%;
+    background: #59b17a;
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.mobileMenuClose {
+    background-color: transparent;
+    width: 32px;
+    border: none;
+    height: 40px;
+    align-self: flex-end;
+    color: #fff;
+}
+
+.mobileMenuList li {
+    background: #fff;
+    border-radius: 60px;
+    height: 46px;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    color: #93939a;
+    border-radius: 24px;
+    padding: 8px 12px;
+    width: 100%;
+    /* height: 100%; */
+    background: #59b17a;
+}
