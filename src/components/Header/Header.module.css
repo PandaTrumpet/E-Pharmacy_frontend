@@ -37,6 +37,10 @@
     height: 32px;
 }
 
+.navMenu {
+    display: none;
+}
+
 .navRegisteredElement {
     display: flex;
     align-items: center;
@@ -58,6 +62,7 @@
     height: 40px;
     background-color: #fff;
     box-shadow: 0 -1px 7px 0 rgba(71, 71, 71, 0.05);
+    cursor: pointer;
 }
 
 .quantityShop {
@@ -87,6 +92,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .i p {
@@ -102,7 +108,7 @@
     background-color: transparent;
     width: 32px;
     height: 40px;
-
+    cursor: pointer;
 }
 
 .mobileClose {
@@ -113,31 +119,69 @@
 
 }
 
+
 .mobileMenu {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
+    /* height: 100vh; */
     display: flex;
+    visibility: hidden;
+
+    /* Добавляем прокрутку */
+
+}
 
 
+.mobileMenu.active {
+    visibility: visible;
+    animation: slideIn 0.3s forwards;
+    background: rgba(29, 30, 33, 0.45);
+
+}
+
+.mobileMenu.active .darkTileMobile {
+    opacity: 1;
+    /* background: rgba(29, 30, 33, 0.45); */
+    transition: opacity 0.3s ease;
+}
+
+.mobileMenu.active .mainTileMobile {
+    animation: slideIn 0.3s forwards;
 }
 
 .darkTileMobile {
+
     width: 44%;
-    background: rgba(29, 30, 33, 0.45);
+    /* background: rgba(29, 30, 33, 0.45); */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
+
+
+.mobileMenu.closing {
+    animation: slideOut 0.3s forwards;
+}
+
+.mobileMenu.closing .darkTileMobile {
+    opacity: 0;
+}
+
+.mobileMenu.closing .mainTileMobile {
+    animation: slideOut 0.3s forwards;
+}
+
 
 .mainTileMobile {
     width: 56%;
     background: #59b17a;
     display: flex;
     flex-direction: column;
-
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
+    overflow-y: auto;
+    padding: 25px 20px;
+    transform: translateX(100%);
 }
 
 .mobileMenuClose {
@@ -155,13 +199,15 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    align-items: center;
+    margin-top: 197px;
 }
 
 .mobileMenuList li {
     background: #fff;
     border-radius: 60px;
     height: 46px;
-    padding: 15px 15px;
+    padding: 7px 7px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,13 +225,40 @@
     border-radius: 24px;
     padding: 8px 12px;
     width: 100%;
-    /* height: 100%; */
-    background: #59b17a;
+    height: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.homeLink {
+    width: 96px;
     position: relative;
 }
 
-.first::before {
-    bottom: -11px;
+.storeLink {
+    width: 138px;
+    position: relative;
+}
+
+.medicinelink {
+    width: 112px;
+}
+
+.homeLink::before {
+    bottom: -4px;
+    position: absolute;
+    content: "";
+    height: 4px;
+    width: 10px;
+    border-left: 1px solid rgba(196, 201, 198, 0.719);
+    border-right: 1px solid rgba(196, 201, 198, 0.719);
+    border-top: #fff;
+    border-bottom: #fff;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.storeLink::before {
+    bottom: -4px;
     position: absolute;
     content: "";
     height: 4px;
@@ -197,15 +270,294 @@
     background-color: #fff;
 }
 
-.second::before {
-    bottom: -11px;
-    position: absolute;
-    content: "";
-    height: 4px;
-    width: 10px;
-    border-left: 1px solid rgba(196, 201, 198, 0.719);
-    border-right: 1px solid rgba(196, 201, 198, 0.719);
-    border-top: #fff;
-    border-bottom: #fff;
-    background-color: #fff;
+.active {
+    background: #59b17a;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.registerList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 302px;
+
+}
+
+
+.registerList li {
+    border-radius: 60px;
+}
+
+.registerBtn {
+    border: 1px solid rgba(241, 241, 241, 0.5);
+    border-radius: 60px;
+    padding: 13px 32px;
+    width: 119px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1;
+    background: #59b17a;
+    color: #f1f1f1;
+    cursor: pointer;
+    outline-color: transparent;
+
+
+}
+
+.loginBtn {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #f1f1f1;
+    background: #59b17a;
+    border: none;
+    outline-color: transparent;
+
+    cursor: pointer;
+}
+
+.logoutBtn {
+    border: 1px solid rgba(241, 241, 241, 0.5);
+    border-radius: 60px;
+    padding: 15px 32px;
+    width: 115px;
+    height: 44px;
+    background: #59b17a;
+
+    outline-color: transparent;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: #f1f1f1;
+}
+
+.registerListDesktop .logoutBtn {
+    display: none;
+}
+
+.registerListDesktop .loginBtn {
+    display: none;
+}
+
+.registerListDesktop .registerBtn {
+    display: none;
+}
+
+.navRegisteredElementDesktop {
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@media (min-width:768px) {
+    .mainTileMobile {
+        width: 45%;
+        padding-top: 28px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .darkTileMobile {
+        width: 55%;
+    }
+
+    .mobileMenuList {
+
+
+        margin-top: 279px;
+    }
+
+    .registerList {
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 422px;
+    }
+
+
+}
+
+@media (min-width:1440px) {
+    .mobileMenuIcon {
+        display: none;
+    }
+
+    .navMenu {
+        display: flex;
+        gap: 3px;
+    }
+
+    .navMenu li {
+        background: #fff;
+        border-radius: 60px;
+        height: 46px;
+        padding: 7px 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(196, 201, 198, 0.719);
+    }
+
+    .homeLink::before {
+        display: none;
+    }
+
+    .storeLink::before {
+        /* bottom: -4px;
+            position: absolute;
+            content: "";
+            height: 4px;
+            width: 10px;
+            border-left: 1px solid rgba(196, 201, 198, 0.719);
+            border-right: 1px solid rgba(196, 201, 198, 0.719);
+            border-top: #fff;
+            border-bottom: #fff;
+            background-color: #fff; */
+        display: none;
+    }
+
+    .homeLink::after {
+        /* bottom: -4px; */
+        top: 14px;
+        right: -6px;
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 7px;
+        border-top: 1px solid rgba(196, 201, 198, 0.719);
+        border-bottom: 1px solid rgba(196, 201, 198, 0.719);
+        /* border-top: #fff;
+        border-bottom: #fff; */
+        background-color: #fff;
+        z-index: 2;
+    }
+
+    .storeLink::after {
+        /* bottom: -4px; */
+        top: 14px;
+        right: -6px;
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 7px;
+        border-top: 1px solid rgba(196, 201, 198, 0.719);
+        border-bottom: 1px solid rgba(196, 201, 198, 0.719);
+        /* border-top: #fff;
+            border-bottom: #fff; */
+        background-color: #fff;
+        z-index: 2;
+    }
+
+    .navRegisteredElement {
+        display: none;
+    }
+
+    .registerListDesktop {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .registerListDesktop .logoutBtn {
+        display: block;
+    }
+
+    .registerListDesktop .loginBtn {
+        display: block;
+    }
+
+    .registerListDesktop .registerBtn {
+        display: block;
+    }
+
+    .registerListDesktop .logoutBtn {
+        border: 1px solid rgba(89, 177, 122, 0.5);
+        border-radius: 60px;
+        padding: 16px 32px;
+        width: 115px;
+        height: 46px;
+        background-color: transparent;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1;
+        color: #59b17a;
+    }
+
+    .navRegisteredElementDesktop {
+        display: flex;
+        gap: 12px;
+    }
+
+    .desktopRegistered {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .i {
+        width: 44px;
+        height: 44px;
+
+    }
+
+    .i p {
+
+        font-size: 1.125rem;
+
+    }
+
+    .marketIcion {
+        width: 16px;
+        height: 16px;
+    }
+
+    .marketIconCont {
+
+        width: 44px;
+        height: 44px;
+
+    }
+
+    .quantityShop {
+
+        top: -3px;
+        right: 1px;
+    }
+
+    .quantityShop p {
+        font-weight: 700;
+        font-size: 0.75rem;
+        color: #59b17a;
+    }
 }

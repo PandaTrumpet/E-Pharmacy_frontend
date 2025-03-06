@@ -158,7 +158,9 @@
     .registerContainer {
         max-width: 768px;
         height: 1024px;
+        padding-top: 28px;
         padding-left: 32px;
+        padding-right: 32px;
     }
 
     .main {
