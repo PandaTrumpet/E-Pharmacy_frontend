@@ -10,6 +10,11 @@
     padding-right: 20px;
 }
 
+.footer {
+
+    background: #59b17a;
+}
+
 @media (min-width:768px) {
     .layoutContainer {
         max-width: 768px;

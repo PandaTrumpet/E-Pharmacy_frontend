@@ -1,0 +1,214 @@
+.footerCont {
+    background: #59b17a;
+    /* height: 334px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.logoCont {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.logoCont p {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
+    color: #fff;
+}
+
+.footerText {
+    margin-top: 20px;
+    max-width: 261px;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #f7f8fa;
+}
+
+.socialLinksList {
+    display: none;
+}
+
+.navList {
+    max-width: 268px;
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.navLinks {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #f7f8fa;
+}
+
+.navFooterCont {
+    margin-bottom: 80px;
+
+}
+
+.privacyCont {
+    border-top: 1px solid rgba(247, 248, 250, 0.3);
+    padding-top: 20px;
+
+}
+
+.privacyList {
+    max-width: 293px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.privacyItem {
+    font-weight: 400;
+    font-size: 0.625rem;
+    line-height: 1;
+    color: #f7f8fa;
+
+}
+
+.privacyElement {
+    background: #f7f8fa;
+    opacity: 0.2;
+    border-radius: 8px;
+    width: 1px;
+    height: 10px;
+}
+
+@media (min-width:768px) {
+    .footerCont {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    .logoCont {
+        gap: 14px;
+    }
+
+    .logoCont p {
+        font-size: 1.25rem;
+    }
+
+    .footerText {
+        margin-top: 20px;
+        max-width: 261px;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.25;
+        color: #f7f8fa;
+    }
+
+    .navFooterCont {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .navList {
+        max-width: 296px;
+        margin-top: 0;
+    }
+
+    .navLinks {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .socialLinksList {
+        display: flex;
+        gap: 12px;
+        align-self: flex-end;
+    }
+
+    .socialLinksList li {
+        border: 1px solid rgba(247, 248, 250, 0.1);
+        border-radius: 10px;
+        /* padding: 8px; */
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .linkCont {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .instagramIcon {
+        fill: #fff;
+    }
+
+    .socialLinksList li a {
+
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .socialLinksList li a img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .privacyList {
+
+        max-width: 591px;
+
+        gap: 24px;
+    }
+
+    .privacyCont {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .privacyItem {
+
+        font-size: 0.875rem;
+        line-height: 1.29;
+    }
+
+    .privacyElement {
+        height: 20px;
+    }
+}
+
+
+
+
+
+
+@media (min-width:1440px) {
+    .footerCont {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .linkCont {
+
+        flex-direction: row;
+        gap: 270px;
+    }
+
+    .socialLinksList {
+
+        align-self: flex-start;
+    }
+
+    .navList {
+        max-width: 332px;
+
+        gap: 50px;
+    }
+
+}
