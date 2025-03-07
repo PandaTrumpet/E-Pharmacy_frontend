@@ -1,0 +1,98 @@
+.contentCont {
+    padding-top: 216px;
+    padding-bottom: 246px;
+    background: #59b17a;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.mainCont {
+    /* background-color: url("../../images//home_pills.svg"); */
+    margin: 0 auto;
+    max-width: 331px;
+    height: 331px;
+    padding-top: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    background-image: url("../../images/home_pills.svg");
+    background-size: contain;
+    /* Чтобы изображение полностью вписывалось */
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Расположение внизу */
+}
+
+.mainCont h1 {
+    font-weight: 600;
+    font-size: 3.125rem;
+    line-height: 1;
+    color: #fff;
+    max-width: 293px;
+    text-shadow: 0 4px 85px 0 rgba(29, 30, 33, 0.3);
+}
+
+.mainCont p {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.33;
+    color: #fff;
+    max-width: 156px;
+    align-self: flex-end;
+}
+
+@media (min-width:768px) {
+    .contentCont {
+        padding-top: 186px;
+        padding-bottom: 258px;
+        padding-left: 32px;
+        padding-right: 32px;
+
+    }
+
+    .mainCont {
+        background-image: url("../../images/home_pills_768.svg");
+        padding-left: 31px;
+        padding-top: 140px;
+        padding-right: 64px;
+        max-width: 704px;
+        height: 508px;
+    }
+
+    .mainCont h1 {
+        font-weight: 600;
+        font-size: 4.625rem;
+        line-height: 1;
+        color: #fff;
+        max-width: 609px;
+    }
+
+    .mainCont p {
+        font-size: 1rem;
+        line-height: 1.25;
+        max-width: 207px;
+        margin-right: 19px;
+    }
+}
+
+@media(min-width:1440px) {
+    .contentCont {
+        padding-top: 118px;
+        padding-bottom: 146px;
+        padding-left: 100px;
+        padding-right: 100px;
+
+    }
+
+    .mainCont {
+        margin: 0 auto;
+        max-width: 749px;
+        height: 508px;
+        padding-left: 54px;
+        padding-right: 95px;
+        background-image: url("../../images/home_pills_1440.svg");
+    }
+}

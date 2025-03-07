@@ -3,6 +3,9 @@
     /* height: 334px; */
     padding-top: 20px;
     padding-bottom: 20px;
+    width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .logoCont {
@@ -83,6 +86,9 @@
     .footerCont {
         padding-top: 32px;
         padding-bottom: 32px;
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
     }
 
     .logoCont {
@@ -133,6 +139,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: border 0.3s ease-in-out;
+    }
+
+    .socialLinksList li:hover,
+    .socialLinksList li:focus {
+        border: 1px solid rgba(247, 248, 250, 0.5);
     }
 
     .linkCont {
@@ -192,6 +204,9 @@
     .footerCont {
         padding-top: 40px;
         padding-bottom: 40px;
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
     }
 
     .linkCont {

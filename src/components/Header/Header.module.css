@@ -1,14 +1,16 @@
 .headerContainer {
-    /* margin: 0 auto;
-    width: 100%;
-    max-width: 375px;
-    height: 812px;
-    display: flex;
 
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px; */
-    /* position: relative; */
+
+
+
+    /* padding-top: 25px; */
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+
+}
+
+.homePage {
+    background: #59b17a;
 }
 
 .headerMain {
@@ -16,6 +18,13 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    width: 375px;
+    margin: 0 auto;
+
+
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .logoCont {
@@ -25,11 +34,18 @@
     cursor: pointer;
 }
 
-.logoCont p {
+.logoText {
     font-weight: 600;
     font-size: 1rem;
     letter-spacing: -0.03em;
     color: #1d1e21;
+}
+
+.logoTextHome {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.03em;
 }
 
 .logo {
@@ -381,11 +397,20 @@
 }
 
 @media (min-width:768px) {
-    .mainTileMobile {
-        width: 45%;
+    .headerContainer {}
+
+    .headerMain {
         padding-top: 28px;
         padding-left: 32px;
         padding-right: 32px;
+        width: 768px;
+    }
+
+    .mainTileMobile {
+        width: 45%;
+        /* padding-top: 28px; */
+        /* padding-left: 32px; */
+        /* padding-right: 32px; */
     }
 
     .darkTileMobile {
@@ -405,10 +430,37 @@
         margin-top: 422px;
     }
 
+    .logo {
+        width: 44px;
+        height: 44px;
+    }
 
+    .logoCont {
+
+        gap: 14px;
+
+    }
+
+    .logoText {
+
+        font-size: 1.25rem;
+
+    }
+
+    .logoTextHome {
+        font-size: 1.25rem;
+    }
 }
 
 @media (min-width:1440px) {
+    .headerContainer {}
+
+    .headerMain {
+        width: 1440px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
     .mobileMenuIcon {
         display: none;
     }
@@ -434,16 +486,7 @@
     }
 
     .storeLink::before {
-        /* bottom: -4px;
-            position: absolute;
-            content: "";
-            height: 4px;
-            width: 10px;
-            border-left: 1px solid rgba(196, 201, 198, 0.719);
-            border-right: 1px solid rgba(196, 201, 198, 0.719);
-            border-top: #fff;
-            border-bottom: #fff;
-            background-color: #fff; */
+
         display: none;
     }
 
@@ -560,4 +603,6 @@
         font-size: 0.75rem;
         color: #59b17a;
     }
+
+
 }

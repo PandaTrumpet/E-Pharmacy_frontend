@@ -1,36 +1,60 @@
 import css from "./Header.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../images/logo.png";
 import logo1440 from "../../images/logo_1440.png";
 import logo768 from "../../images/logo_768.png";
+import logoWhite from "../../images/footer_logo.png";
+import logoWite1440 from "../../images/footer_logo_1440.png";
+import logoWite768 from "../../images/footer_logo_768.png";
 import market from "../../images/shopping-cart.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import clsx from "clsx";
-const Header = () => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
 
+const Header = () => {
+  const [homeLocation, setHomeLocation] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const handleToggle = () => {
     setIsMobile(!isMobile);
   };
 
-  const [registered, setRegistered] = useState(true);
+  const [registered, setRegistered] = useState(false);
   const buildLinkClass = ({ isActive }: { isActive: boolean }) => {
     return clsx(css.link, isActive && css.active);
   };
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setHomeLocation(true);
+    } else {
+      setHomeLocation(false);
+    }
+  }, [location.pathname, setHomeLocation]);
   return (
-    <header className={css.headerContainer}>
+    <header className={clsx(css.headerContainer, homeLocation && css.homePage)}>
       <div className={css.headerMain}>
         <Link to="/">
           <div className={css.logoCont}>
             <picture>
-              <source media="(min-width: 1440px)" srcSet={logo1440} />
-              <source media="(min-width: 768px)" srcSet={logo768} />
-              <img src={logo} alt="Logo" className={css.logo} />
+              <source
+                media="(min-width: 1440px)"
+                srcSet={homeLocation ? logoWite1440 : logo1440}
+              />
+              <source
+                media="(min-width: 768px)"
+                srcSet={homeLocation ? logoWite768 : logo768}
+              />
+              <img
+                src={homeLocation ? logoWhite : logo}
+                alt="Logo"
+                className={css.logo}
+              />
             </picture>
 
-            <p>E-Pharmacy</p>
+            <p className={clsx(homeLocation ? css.logoTextHome : css.logoText)}>
+              E-Pharmacy
+            </p>
           </div>
         </Link>
         <nav>
@@ -142,7 +166,7 @@ const Header = () => {
               <IoCloseOutline size={24} />
             </button>
             <ul className={css.mobileMenuList}>
-              <li className={css.homeLink}>
+              <li className={css.homeLink} onClick={() => setIsMobile(false)}>
                 <NavLink
                   to="/"
                   // className={clsx(css.link, css.first)}
@@ -151,7 +175,7 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className={css.storeLink}>
+              <li className={css.storeLink} onClick={() => setIsMobile(false)}>
                 <NavLink
                   to="/medicine-store"
                   // className={clsx(css.link, css.second)}
@@ -160,7 +184,10 @@ const Header = () => {
                   Medicine store
                 </NavLink>
               </li>
-              <li className={css.medicinelink}>
+              <li
+                className={css.medicinelink}
+                onClick={() => setIsMobile(false)}
+              >
                 <NavLink to="/medicine" className={buildLinkClass}>
                   Medicine
                 </NavLink>
