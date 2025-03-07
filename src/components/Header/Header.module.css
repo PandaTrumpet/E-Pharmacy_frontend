@@ -127,6 +127,15 @@
     cursor: pointer;
 }
 
+.mobileMenuIconHomePage {
+    border: none;
+    color: #fff;
+    background-color: transparent;
+    width: 32px;
+    height: 40px;
+    cursor: pointer;
+}
+
 .mobileClose {
     background-color: transparent;
     width: 32px;

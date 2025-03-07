@@ -141,7 +141,12 @@ const Header = () => {
               <p>I</p>
             </li>
             <li>
-              <button className={css.mobileMenuIcon} onClick={handleToggle}>
+              <button
+                className={clsx(
+                  homeLocation ? css.mobileMenuIconHomePage : css.mobileMenuIcon
+                )}
+                onClick={handleToggle}
+              >
                 <IoIosMenu size={24} />
               </button>
             </li>
@@ -151,7 +156,16 @@ const Header = () => {
             className={isMobile ? css.mobileClose : css.mobileMenuIcon}
             onClick={handleToggle}
           >
-            {isMobile ? <IoCloseOutline size={24} /> : <IoIosMenu size={24} />}
+            {isMobile ? (
+              <IoCloseOutline size={24} />
+            ) : (
+              <IoIosMenu
+                size={24}
+                className={clsx(
+                  homeLocation ? css.mobileMenuIconHomePage : css.mobileMenuIcon
+                )}
+              />
+            )}
           </button>
         )}
       </div>
