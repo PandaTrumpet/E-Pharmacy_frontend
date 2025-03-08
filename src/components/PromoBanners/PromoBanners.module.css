@@ -133,4 +133,18 @@
         padding-right: 100px;
         min-width: 1440px;
     }
+
+    .banerList {
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 28px;
+    }
+
+    .banerItem {
+        width: 321px;
+        height: 167px;
+
+    }
 }
