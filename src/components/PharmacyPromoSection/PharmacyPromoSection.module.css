@@ -1,0 +1,246 @@
+.mainSection {
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.mainPromoSectionCont {
+    padding: 20px;
+    background: #59b17a;
+    border-radius: 32px;
+    max-width: 335px;
+}
+
+.mainPromoSectionCont h2 {
+
+    font-size: 1.75rem;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+.mainPromoSectionCont p {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+}
+
+.mainPromoSectionBtn {
+    border: 1px solid rgba(241, 241, 241, 0.5);
+    border-radius: 60px;
+    padding: 13px 32px;
+    width: 154px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #f1f1f1;
+    outline: none;
+    background: transparent;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.mainPromoSectionBtn:hover,
+.mainPromoSectionBtn:focus {
+    background: #3f945f;
+}
+
+.infoCont {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 19px;
+}
+
+
+.foto {
+    width: 100%;
+    /* max-width: 295px; */
+}
+
+
+
+
+/* Feature section */
+.featureSection {
+    margin: 0 auto;
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+
+.featureList {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    /* justify-content: center; */
+    /* Горизонтальный скролл */
+    white-space: nowrap;
+    /* Запрещает перенос элементов на новую строку */
+    padding-bottom: 10px;
+    /* Чтобы не перекрывалось скроллбаром */
+    white-space: nowrap;
+    /* Плавная прокрутка для iOS */
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+.featureList::-webkit-scrollbar {
+    height: 0px;
+
+}
+
+
+.featureList::-webkit-scrollbar-track {
+    /* background: transparent; */
+}
+
+.featureItem {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.featureItem p {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #1d1e21;
+}
+
+.featureItem img {
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width:768px) {
+    .mainSection {
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
+    }
+
+    .mainPromoSectionCont {
+        padding: 40px 48px;
+
+
+        max-width: 704px;
+    }
+
+    .infoCont {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+
+    .mainPromoSectionCont h2 {
+
+        font-size: 3rem;
+        line-height: 1.15;
+
+        margin-bottom: 24px;
+    }
+
+    .mainPromoSectionCont p {
+
+        font-size: 1rem;
+        line-height: 1.25;
+        max-width: 488px;
+
+    }
+
+    .mainPromoSectionBtn {
+
+        padding: 13px 50px;
+        width: 190px;
+        height: 44px;
+
+    }
+
+    .featureSection {
+
+        display: flex;
+
+        justify-content: center;
+        padding-top: 64px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 60px;
+        max-width: 768px;
+    }
+
+    .foto {
+        width: 100%;
+        /* max-width: 295px; */
+    }
+
+
+
+
+    .featureItem p {
+        font-size: 1rem;
+
+    }
+
+
+}
+
+@media (min-width:1440px) {
+    .mainSection {
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
+    }
+
+    .mainPromoSectionCont {
+        padding: 40px 80px;
+        max-width: 1248px;
+        display: flex;
+        gap: 19px;
+    }
+
+    .mainPromoSectionCont h2 {
+
+        min-width: 501px;
+    }
+
+    .infoCont {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        width: 501px;
+        margin: 0;
+    }
+
+    .fotoCont {
+        height: 406px;
+    }
+
+
+    .featureList {
+
+        gap: 48px;
+
+    }
+
+    .featureSection {
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 60px;
+        max-width: 1440px;
+    }
+}
