@@ -1,0 +1,161 @@
+.mainSection {
+    max-width: 375px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.titleCont {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.titleCont h2 {
+
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.14;
+    text-align: center;
+    color: #1d1e21;
+    max-width: 291px;
+}
+
+.titleCont p {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    text-align: center;
+    color: #93939a;
+}
+
+.storeItem {
+    background: #e7f1ed;
+    border: 1.15px solid #f1f1f1;
+    border-radius: 27px;
+
+    width: 335px;
+    height: 202px;
+}
+
+.storeCont {
+    padding: 40px;
+}
+
+.flexCont {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.storeRating {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.storeRating img {
+    width: 16px;
+    height: 16px;
+}
+
+.ratingNumber {
+
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #1d1e21;
+}
+
+.storeInfo {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+
+}
+
+.storeStatus {
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 65px;
+    height: 34px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #59b17a;
+    background: rgba(89, 177, 122, 0.1);
+}
+
+.infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.locationItem {
+    display: flex;
+    gap: 8px;
+}
+
+.locationIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.addressCont {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+
+.addressCont p {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #93939a;
+}
+
+.phoneItem {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.phoneIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.phone {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #93939a;
+}
+
+@media (min-width:768px) {
+    .mainSection {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
+    }
+}
+
+@media (min-width:1440px) {
+    .mainSection {
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
+    }
+}
