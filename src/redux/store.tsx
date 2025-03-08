@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import reviewsReducer from "./reviews/slice";
+import nearestStoreReducer from "./medicineNearestStore/slice";
 const store = configureStore({
   reducer: {
     reviews: reviewsReducer,
+    nearestStore: nearestStoreReducer,
   },
 });
 

@@ -33,6 +33,12 @@
     color: #93939a;
 }
 
+.storeList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .storeItem {
     background: #e7f1ed;
     border: 1.15px solid #f1f1f1;
@@ -40,10 +46,18 @@
 
     width: 335px;
     height: 202px;
+    position: relative;
 }
 
 .storeCont {
     padding: 40px;
+}
+
+.storName {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
 }
 
 .flexCont {
@@ -142,6 +156,27 @@
     color: #93939a;
 }
 
+.firstElement {
+    position: absolute;
+    bottom: 32px;
+    right: 0px;
+
+}
+
+.secondElement {
+    position: absolute;
+    bottom: 8px;
+    right: 0px;
+}
+
+.thirdElement {
+    position: absolute;
+    bottom: 2px;
+    right: 0px;
+}
+
+
+
 @media (min-width:768px) {
     .mainSection {
         padding-top: 60px;
@@ -150,6 +185,80 @@
         padding-right: 32px;
         min-width: 768px;
     }
+
+    .titleCont h2 {
+
+
+        font-size: 2.5rem;
+        line-height: 1.2;
+
+        max-width: 552px;
+    }
+
+    .titleCont {
+        margin-bottom: 64px;
+    }
+
+    .titleCont p {
+
+        font-size: 1rem;
+        line-height: 1.25;
+
+    }
+
+    .storeList {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        row-gap: 32px;
+    }
+
+    .storeItem {
+        width: 344px;
+        height: 232px;
+        overflow: hidden;
+    }
+
+    .storName {
+
+        font-size: 1.25rem;
+
+    }
+
+    .infoList {
+
+        gap: 18px;
+        margin-top: 34px;
+    }
+
+    .addressCont p {
+        font-size: 1rem;
+        line-height: 1.25
+    }
+
+    .phone {
+        font-size: 1rem;
+        line-height: 1.25
+    }
+
+    .firstElement {
+        position: absolute;
+        bottom: 24px;
+        right: -14px;
+
+    }
+
+    .secondElement {
+        position: absolute;
+        bottom: -4px;
+        right: -24px;
+    }
+
+    .thirdElement {
+        position: absolute;
+        bottom: -4px;
+        right: -8px;
+    }
 }
 
 @media (min-width:1440px) {
@@ -157,5 +266,41 @@
         padding-left: 100px;
         padding-right: 100px;
         min-width: 1440px;
+    }
+
+    .storeList {
+        gap: 32px;
+        row-gap: 36px;
+    }
+
+    .storeItem {
+        width: 392px;
+        height: 232px;
+    }
+
+    .infoList {
+
+        gap: 14px;
+
+    }
+
+
+    .firstElement {
+        position: absolute;
+        bottom: 28px;
+        right: 0px;
+
+    }
+
+    .secondElement {
+        position: absolute;
+        bottom: 4px;
+        right: 0px;
+    }
+
+    .thirdElement {
+        position: absolute;
+        bottom: 0px;
+        right: 4px;
     }
 }
