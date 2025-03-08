@@ -1,0 +1,136 @@
+.mainSection {
+    max-width: 375px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.banerList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.banerItem {
+    border: 1.15px solid #f1f1f1;
+    border-radius: 27px;
+
+    width: 335px;
+    height: 126px;
+    box-shadow: 0 -1px 14px 0 rgba(29, 30, 33, 0.02);
+    background: #fdfdfd
+}
+
+.banerCont {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.banerNameCont {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+
+
+.banerNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: rgba(231, 241, 237, 0.4);
+    width: 54px;
+    height: 54px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1;
+
+    color: #59b17a;
+}
+
+.banerName {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #252539;
+}
+
+.btnCont {
+    display: flex;
+    gap: 30px;
+}
+
+.sale {
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: #252539
+}
+
+.btnCont button {
+    font-weight: 400;
+    font-size: 0.812rem;
+    line-height: 1.4;
+    color: #93939a;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (min-width:768px) {
+    .mainSection {
+        padding-top: 64px;
+        padding-bottom: 60px;
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
+    }
+
+    .banerList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+
+    .banerItem {
+        width: 321px;
+        height: 167px
+    }
+
+    .banerNumber {
+
+        width: 74px;
+        height: 74px;
+
+        font-size: 1.75rem;
+
+    }
+
+    .banerName {
+
+        font-size: 1.25rem;
+
+    }
+
+    .sale {
+
+        font-size: 2.25rem;
+
+    }
+
+}
+
+@media (min-width:1440px) {
+    .mainSection {
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
+    }
+}
