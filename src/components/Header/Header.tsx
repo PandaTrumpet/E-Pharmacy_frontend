@@ -11,10 +11,13 @@ import { useEffect, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import clsx from "clsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isLoggedSelector } from "../../redux/auth/selector";
+import { AppDispatch } from "../../redux/store";
+import { logoutUser } from "../../redux/auth/operation";
 
 const Header = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(isLoggedSelector);
   const [homeLocation, setHomeLocation] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -111,6 +114,7 @@ const Header = () => {
             {isLogged ? (
               <li>
                 <button
+                  onClick={() => dispatch(logoutUser())}
                   className={clsx(
                     homeLocation ? css.logoutBtnHome : css.logoutBtn
                   )}

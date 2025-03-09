@@ -59,3 +59,17 @@ export const loginUser = createAsyncThunk<
     return thunkAPI.rejectWithValue(errorMessage);
   }
 });
+
+export const logoutUser = createAsyncThunk(
+  "auth/logoutUser",
+  async (_, thunkAPI) => {
+    try {
+      localStorage.setItem("accessToken", "");
+      await api.get("/user/logout");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);

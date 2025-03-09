@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "./operation";
+import { loginUser, logoutUser, registerUser } from "./operation";
 
 interface IUser {
   _id: string;
@@ -17,10 +17,10 @@ interface IState {
 }
 const initialState: IState = {
   user: null,
-  accessToken: "",
+  accessToken: localStorage.getItem("accessToken") || null,
   loading: false,
   error: null,
-  isLogged: false,
+  isLogged: localStorage.getItem("accessToken") ? true : false,
 };
 const authSlice = createSlice({
   name: "auth",
@@ -37,6 +37,11 @@ const authSlice = createSlice({
         // state.user = action.payload;
         state.isLogged = true;
         state.accessToken = action.payload.accessToken;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.user = null;
+        state.isLogged = false;
+        localStorage.setItem("accessToken", "");
       });
   },
 });
