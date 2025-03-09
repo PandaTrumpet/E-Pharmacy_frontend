@@ -105,7 +105,7 @@ const Header = () => {
                   </div>
                 </div>
               </li>
-              <li className={css.i}>
+              <li className={clsx(css.i, homeLocation && css.iHome)}>
                 <p>I</p>
               </li>
             </ul>

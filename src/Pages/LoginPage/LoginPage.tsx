@@ -62,7 +62,7 @@ const LoginPage = () => {
               <input {...register("password")} placeholder="Password" />
             </div>
             <div className={css.loginBtnCont}>
-              <button type="submit">Register</button>
+              <button type="submit">Login</button>
               <Link to="/register" className={css.link}>
                 Don't have an account?
               </Link>

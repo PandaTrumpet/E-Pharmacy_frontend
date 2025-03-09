@@ -14,6 +14,7 @@ interface IState {
   error: string | null;
   isLogged: boolean;
   accessToken?: string | null;
+  isRefreshing: boolean;
 }
 const initialState: IState = {
   user: null,
@@ -21,6 +22,7 @@ const initialState: IState = {
   loading: false,
   error: null,
   isLogged: localStorage.getItem("accessToken") ? true : false,
+  isRefreshing: false,
 };
 const authSlice = createSlice({
   name: "auth",
@@ -33,15 +35,20 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.isLogged = true;
       })
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.isRefreshing = true;
+      })
       .addCase(loginUser.fulfilled, (state, action) => {
         // state.user = action.payload;
         state.isLogged = true;
         state.accessToken = action.payload.accessToken;
+        state.isRefreshing = false;
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
         state.isLogged = false;
-        localStorage.setItem("accessToken", "");
+        localStorage.removeItem("accessToken");
       });
   },
 });

@@ -111,6 +111,10 @@
     cursor: pointer;
 }
 
+.iHome {
+    background-color: #fff
+}
+
 .i p {
     font-weight: 600;
     font-size: 0.875rem;

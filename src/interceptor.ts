@@ -22,10 +22,11 @@ const refreshAccessToken = async () => {
 
     const newAccessToken = response.data.data.accessToken;
     localStorage.setItem("accessToken", newAccessToken);
-
+    api.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;
     return newAccessToken;
   } catch (error) {
     console.error("Ошибка обновления токена", error);
+    delete api.defaults.headers.common["Authorization"];
     localStorage.removeItem("accessToken");
     window.location.href = "/login"; // Перенаправление на страницу логина
     return null;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+
 import { baseUrl } from "../../baseUrl";
 import api from "../../interceptor";
 interface RegisterPayload {
@@ -31,7 +31,7 @@ export const registerUser = createAsyncThunk<
   { rejectValue: string }
 >("auth/registerUser", async (data, thunkAPI) => {
   try {
-    const response = await axios.post(`${baseUrl}/user/register`, data);
+    const response = await api.post(`${baseUrl}/user/register`, data);
     console.log(response.data.data);
 
     return response.data.data;
@@ -50,9 +50,9 @@ export const loginUser = createAsyncThunk<
     const response = await api.post("/user/login", data, {
       withCredentials: true, // Отправляет `cookies` на сервер
     });
-    localStorage.setItem("accessToken", response.data.data.accessToken);
-    // console.log(response.data.data);
-
+    const accessToken = response.data.data.accessToken;
+    localStorage.setItem("accessToken", accessToken);
+    api.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     return response.data.data;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
@@ -64,8 +64,9 @@ export const logoutUser = createAsyncThunk(
   "auth/logoutUser",
   async (_, thunkAPI) => {
     try {
-      localStorage.setItem("accessToken", "");
       await api.get("/user/logout");
+      localStorage.removeItem("accessToken"); // Удаляем токен полностью
+      delete api.defaults.headers.common["Authorization"];
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : String(error);
