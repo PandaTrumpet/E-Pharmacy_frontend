@@ -1,0 +1,325 @@
+.mainSection {
+    width: 375px;
+    padding-top: 59px;
+    padding-bottom: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.14;
+    color: #1d1e21;
+    margin-bottom: 40px;
+}
+
+.storeList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.storeItem {
+    background: #e7f1ed;
+    border: 1.15px solid #f1f1f1;
+    border-radius: 27px;
+    overflow: hidden;
+    width: 335px;
+    height: 202px;
+    position: relative;
+}
+
+.storeCont {
+    padding: 40px;
+}
+
+.storeName {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+}
+
+.flexCont {
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column */
+    /* align-items: center; */
+}
+
+.storeRating {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.storeRating img {
+    width: 16px;
+    height: 16px;
+}
+
+.ratingNumber {
+
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #1d1e21;
+}
+
+.storeInfo {
+    display: flex;
+    gap: 14px;
+    align-self: flex-start;
+
+    /* align-items: center; */
+
+}
+
+.storeStatus {
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 65px;
+    height: 34px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #59b17a;
+    background: rgba(89, 177, 122, 0.1);
+}
+
+.storeStatusClose {
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 65px;
+    height: 34px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #e85050;
+    background: rgba(232, 80, 80, 0.1);
+}
+
+.infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.locationItem {
+    display: flex;
+    gap: 8px;
+}
+
+.locationIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.addressCont {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+}
+
+.addressCont p {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #93939a;
+}
+
+.phoneItem {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.phoneIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.phone {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #93939a;
+}
+
+.firstElement {
+    position: absolute;
+    bottom: 15px;
+    right: -144px;
+
+}
+
+.secondElement {
+    position: absolute;
+    bottom: -11px;
+    right: -78px;
+}
+
+.thirdElement {
+    position: absolute;
+    bottom: -72px;
+    right: -100px;
+}
+
+.visitBtn {
+    display: none;
+}
+
+@media (min-width:768px) {
+    .mainSection {
+        padding-top: 78px;
+        padding-bottom: 120px;
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
+    }
+
+    .title {
+        margin-bottom: 32px;
+    }
+
+    .storeList {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        row-gap: 32px;
+    }
+
+    .infoList {
+
+        gap: 18px;
+        margin-top: 34px;
+    }
+
+    .storeItem {
+        width: 344px;
+        height: 276px;
+        overflow: hidden;
+    }
+
+    .storName {
+
+        font-size: 1.25rem;
+
+    }
+
+    .addressCont p {
+        font-size: 1rem;
+        line-height: 1.25
+    }
+
+    .phone {
+        font-size: 1rem;
+        line-height: 1.25
+    }
+
+    .visitBtn {
+        background: #59b17a;
+        display: block;
+        border-radius: 24px;
+        padding: 10px 16px;
+        width: 102px;
+        /* height: 34px; */
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1;
+        text-align: center;
+        color: #fff;
+        border: none;
+        transition: background 0.3s ease-in-out;
+        cursor: pointer;
+        margin-top: 36px;
+    }
+
+    .visitBtn:hover,
+    .visitBtn:focus {
+        background: #3f945f;
+    }
+
+    .storeInfo {
+
+        align-self: flex-end;
+    }
+
+    .firstElement {
+        position: absolute;
+        bottom: 199px;
+        right: -136px;
+
+    }
+
+    .secondElement {
+        position: absolute;
+        bottom: 172px;
+        right: -61px;
+    }
+
+    .thirdElement {
+        position: absolute;
+        bottom: 108px;
+        right: -82px;
+    }
+}
+
+
+@media (min-width:1440px) {
+    .mainSection {
+        padding-top: 98px;
+        padding-bottom: 120px;
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    .storeList {
+        gap: 32px;
+        row-gap: 36px;
+    }
+
+    .storeItem {
+        width: 381px;
+        height: 276px;
+    }
+
+    .infoList {
+        gap: 14px;
+
+    }
+
+    .firstElement {
+        position: absolute;
+        bottom: 205px;
+        right: -94px;
+
+    }
+
+    .secondElement {
+        position: absolute;
+        bottom: 170px;
+        right: -38px;
+    }
+
+    .thirdElement {
+        position: absolute;
+        bottom: 105px;
+        right: -62px;
+    }
+}
