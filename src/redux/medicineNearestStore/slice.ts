@@ -7,6 +7,7 @@ export interface IStores {
   phone: string;
   rating: number;
   _id: string;
+  status: string;
 }
 interface IInitialState {
   stores: IStores[] | null;

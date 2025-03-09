@@ -10,6 +10,7 @@ import { nearestStorsSelector } from "../../redux/medicineNearestStore/selector"
 import firstElement from "../../images/firstElementStore.svg";
 import secondElement from "../../images/secondElementStore.svg";
 import thirdElement from "../../images/thirdElementStore.svg";
+import clsx from "clsx";
 const MedicineNearestStores = () => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
@@ -38,7 +39,15 @@ const MedicineNearestStores = () => {
                         <img src={star} alt="Rating icon" />
                         <p className={css.ratingNumber}>{store.rating}</p>
                       </div>
-                      <p className={css.storeStatus}>Open</p>
+                      <p
+                        className={clsx(
+                          store.status === "open"
+                            ? css.storeStatus
+                            : css.storeStatusClose
+                        )}
+                      >
+                        {store.status}
+                      </p>
                     </div>
                   </div>
 

@@ -107,6 +107,21 @@
     background: rgba(89, 177, 122, 0.1);
 }
 
+.storeStatusClose {
+    border-radius: 8px;
+    padding: 8px 16px;
+    width: 65px;
+    height: 34px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #e85050;
+    background: rgba(232, 80, 80, 0.1);
+}
+
 .infoList {
     display: flex;
     flex-direction: column;
