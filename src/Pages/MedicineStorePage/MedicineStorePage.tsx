@@ -11,6 +11,7 @@ import downElement from "../../images/downElement.png";
 import star from "../../images/star.svg";
 import location from "../../images/location.svg";
 import phone from "../../images/phone.svg";
+import { Link } from "react-router-dom";
 
 const MedicineStorePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -70,7 +71,9 @@ const MedicineStorePage = () => {
                           />
                         </li>
                       </ul>
-                      <button className={css.visitBtn}>Viisit Store</button>
+                      <Link className={css.visitBtn} to="/medicine">
+                        Visit Store
+                      </Link>
                     </div>
 
                     <div className={css.storeInfo}>
