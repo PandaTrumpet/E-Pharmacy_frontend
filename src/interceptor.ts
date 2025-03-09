@@ -28,7 +28,7 @@ const refreshAccessToken = async () => {
     console.error("Ошибка обновления токена", error);
     delete api.defaults.headers.common["Authorization"];
     localStorage.removeItem("accessToken");
-    window.location.href = "/login"; // Перенаправление на страницу логина
+    // window.location.href = "/login"; // Перенаправление на страницу логина
     return null;
   }
 };

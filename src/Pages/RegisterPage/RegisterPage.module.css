@@ -154,6 +154,11 @@
     right: 0;
 }
 
+.error {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
 @media (min-width: 768px) {
     .registerContainer {
         max-width: 768px;

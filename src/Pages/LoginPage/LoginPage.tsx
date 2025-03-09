@@ -14,20 +14,31 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store.tsx";
 import { loginUser } from "../../redux/auth/operation.ts";
+import toast from "react-hot-toast";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../validation.ts";
 const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
-    // formState: { errors },
-  } = useForm<ILoginFormInput>();
+    formState: { errors, isSubmitting },
+  } = useForm<ILoginFormInput>({
+    resolver: yupResolver(loginSchema),
+    mode: "onSubmit",
+  });
   const onSubmit: SubmitHandler<ILoginFormInput> = (data) => {
     // console.log(data);
 
     dispatch(loginUser({ email: data.email, password: data.password }))
       .unwrap()
-      .then(() => navigate("/"));
+      .then(() => {
+        toast.success("Successfull login!");
+
+        navigate("/");
+      })
+      .catch(() => toast.error("Email or password are wrong!"));
   };
   return (
     <div className={css.loginContainer}>
@@ -59,10 +70,19 @@ const LoginPage = () => {
           <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
             <div className={css.inputCont}>
               <input {...register("email")} placeholder="Email address" />
+              {errors.email && (
+                <p className={css.error}>{errors.email.message}</p>
+              )}
               <input {...register("password")} placeholder="Password" />
+              {errors.password && (
+                <p className={css.error}>{errors.password.message}</p>
+              )}
             </div>
             <div className={css.loginBtnCont}>
-              <button type="submit">Login</button>
+              <button type="submit" disabled={isSubmitting}>
+                {" "}
+                {isSubmitting ? "Logging in..." : "Login"}
+              </button>
               <Link to="/register" className={css.link}>
                 Don't have an account?
               </Link>

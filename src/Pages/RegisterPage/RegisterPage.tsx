@@ -14,14 +14,20 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store.tsx";
 import { registerUser } from "../../redux/auth/operation.ts";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../../validation.ts";
+import toast from "react-hot-toast";
 const RegisterPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
-    // formState: { errors },
-  } = useForm<IRegisterFormInput>();
+    formState: { errors, isSubmitting },
+  } = useForm<IRegisterFormInput>({
+    resolver: yupResolver(registerSchema),
+    mode: "onSubmit",
+  });
   const onSubmit: SubmitHandler<IRegisterFormInput> = (data) => {
     dispatch(
       registerUser({
@@ -32,7 +38,11 @@ const RegisterPage = () => {
       })
     )
       .unwrap()
-      .then(() => navigate("/login"));
+      .then(() => {
+        toast.success("Successfully registered!");
+        navigate("/login");
+      })
+      .catch(() => toast.error("Check the data is correct!"));
   };
   return (
     <div className={css.registerContainer}>
@@ -61,15 +71,42 @@ const RegisterPage = () => {
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className={css.registerForm}>
             <div className={css.nameAddress}>
-              <input {...register("name")} placeholder="User Name" />
-              <input {...register("email")} placeholder="Email address" />
+              <div className={css.inputCont}>
+                <input {...register("name")} placeholder="User Name" />
+                {errors.name && (
+                  <p className={css.error}>{errors.name.message}</p>
+                )}
+              </div>
+              <div className={css.inputCont}>
+                <input {...register("email")} placeholder="Email address" />
+                {errors.email && (
+                  <p className={css.error}>{errors.email.message}</p>
+                )}
+              </div>
             </div>
             <div className={css.phonePassword}>
-              <input {...register("phoneNumber")} placeholder="Phone number" />
-              <input {...register("password")} placeholder="Password" />
+              <div className={css.inputCont}>
+                {" "}
+                <input
+                  {...register("phoneNumber")}
+                  placeholder="Phone number"
+                />
+                {errors.phoneNumber && (
+                  <p className={css.error}>{errors.phoneNumber.message}</p>
+                )}
+              </div>
+              <div className={css.inputCont}>
+                {" "}
+                <input {...register("password")} placeholder="Password" />
+                {errors.password && (
+                  <p className={css.error}>{errors.password.message}</p>
+                )}
+              </div>
             </div>
             <div className={css.registerBtnCont}>
-              <button type="submit">Register</button>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Registering..." : "Register"}
+              </button>
               <Link to="/login" className={css.link}>
                 Already have an account?
               </Link>

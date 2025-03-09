@@ -45,6 +45,10 @@ const authSlice = createSlice({
         state.accessToken = action.payload.accessToken;
         state.isRefreshing = false;
       })
+      .addCase(loginUser.rejected, (state) => {
+        state.isRefreshing = false;
+        // state.error = action.error.message;
+      })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
         state.isLogged = false;

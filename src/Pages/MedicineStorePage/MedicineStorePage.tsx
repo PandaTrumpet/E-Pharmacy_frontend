@@ -12,14 +12,18 @@ import star from "../../images/star.svg";
 import location from "../../images/location.svg";
 import phone from "../../images/phone.svg";
 import { Link } from "react-router-dom";
+// import { isLoggedSelector } from "../../redux/auth/selector";
 
 const MedicineStorePage = () => {
+  // const isLogged = useSelector(isLoggedSelector);
+  // console.log(isLogged);
+
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getStores());
   }, [dispatch]);
   const stores = useSelector(storeSelector) || [];
-  console.log(stores);
+  // console.log(stores);
 
   return (
     <section className={css.mainSection}>
@@ -29,7 +33,7 @@ const MedicineStorePage = () => {
           stores.length > 0 &&
           stores.map((store) => {
             return (
-              <li className={css.storeItem}>
+              <li className={css.storeItem} key={store._id}>
                 <div className={css.storeCont}>
                   <div className={css.flexCont}>
                     <div>

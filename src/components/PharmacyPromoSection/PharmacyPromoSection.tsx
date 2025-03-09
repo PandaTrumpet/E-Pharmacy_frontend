@@ -3,7 +3,9 @@ import foto from "../../images/promoSectionImage.png";
 import foto768 from "../../images/promoSectionImage_768.png";
 import foto1440 from "../../images/promoSectionImage_1440.png";
 import featureIcon from "../../images/featureIcon.svg";
+import { useNavigate } from "react-router-dom";
 const PharmacyPromoSection = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section className={css.mainSection}>
@@ -15,7 +17,12 @@ const PharmacyPromoSection = () => {
               home by connecting with your community pharmacy through our online
               platform.
             </p>
-            <button className={css.mainPromoSectionBtn}>Buy medicine</button>
+            <button
+              className={css.mainPromoSectionBtn}
+              onClick={() => navigate("/medicine-store")}
+            >
+              Buy medicine
+            </button>
           </div>
           <div className={css.fotoCont}>
             <picture>
