@@ -11,14 +11,20 @@ import downElement1440 from "../../images/downElement_1440.png";
 import downElement768 from "../../images/downElement_768.png";
 import { ILoginFormInput } from "../../types.tsx";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store.tsx";
+import { loginUser } from "../../redux/auth/operation.ts";
 const LoginPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm<ILoginFormInput>();
   const onSubmit: SubmitHandler<ILoginFormInput> = (data) => {
-    console.log(data);
+    // console.log(data);
+
+    dispatch(loginUser({ email: data.email, password: data.password }));
   };
   return (
     <div className={css.loginContainer}>
