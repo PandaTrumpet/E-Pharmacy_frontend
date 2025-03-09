@@ -366,6 +366,22 @@
     color: #f1f1f1;
 }
 
+.logoutBtnHome {
+    border: 1px solid rgba(241, 241, 241, 0.5);
+    border-radius: 60px;
+    padding: 15px 32px;
+    width: 115px;
+    height: 44px;
+    background: #59b17a;
+
+    outline-color: transparent;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: #f1f1f1;
+}
+
 .registerListDesktop .logoutBtn {
     display: none;
 }
@@ -565,6 +581,19 @@
         font-size: 0.875rem;
         line-height: 1;
         color: #59b17a;
+    }
+
+    .logoutBtnHome {
+        border: 1px solid rgba(241, 241, 241, 0.5);
+        border-radius: 60px;
+        padding: 16px 32px;
+        width: 115px;
+        height: 46px;
+        background-color: transparent;
+        font-weight: 400;
+        font-size: 0.875rem;
+        line-height: 1;
+        color: #f1f1f1;
     }
 
     .navRegisteredElementDesktop {

@@ -1,5 +1,5 @@
 import css from "./LoginPage.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
 import logo1440 from "../../images/logo_1440.png";
 import logo768 from "../../images/logo_768.png";
@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store.tsx";
 import { loginUser } from "../../redux/auth/operation.ts";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
@@ -24,7 +25,9 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<ILoginFormInput> = (data) => {
     // console.log(data);
 
-    dispatch(loginUser({ email: data.email, password: data.password }));
+    dispatch(loginUser({ email: data.email, password: data.password }))
+      .unwrap()
+      .then(() => navigate("/"));
   };
   return (
     <div className={css.loginContainer}>
@@ -61,7 +64,7 @@ const LoginPage = () => {
             <div className={css.loginBtnCont}>
               <button type="submit">Register</button>
               <Link to="/register" className={css.link}>
-                Already have an account?
+                Don't have an account?
               </Link>
             </div>
           </form>

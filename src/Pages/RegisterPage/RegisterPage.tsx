@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import css from "./RegisterPage.module.css";
 import logo from "../../images/logo.png";
 import logo1440 from "../../images/logo_1440.png";
@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store.tsx";
 import { registerUser } from "../../redux/auth/operation.ts";
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
@@ -29,7 +30,9 @@ const RegisterPage = () => {
         password: data.password,
         phoneNumber: data.phoneNumber.trim(),
       })
-    );
+    )
+      .unwrap()
+      .then(() => navigate("/login"));
   };
   return (
     <div className={css.registerContainer}>

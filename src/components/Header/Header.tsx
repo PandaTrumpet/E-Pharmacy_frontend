@@ -11,15 +11,17 @@ import { useEffect, useState } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import clsx from "clsx";
+import { useSelector } from "react-redux";
+import { isLoggedSelector } from "../../redux/auth/selector";
 
 const Header = () => {
+  const isLogged = useSelector(isLoggedSelector);
   const [homeLocation, setHomeLocation] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const handleToggle = () => {
     setIsMobile(!isMobile);
   };
 
-  const [registered, setRegistered] = useState(false);
   const buildLinkClass = ({ isActive }: { isActive: boolean }) => {
     return clsx(css.link, isActive && css.active);
   };
@@ -85,7 +87,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className={css.desktopRegistered}>
-          {registered && (
+          {isLogged && (
             <ul className={css.navRegisteredElementDesktop}>
               <li>
                 <div className={css.marketIconCont}>
@@ -106,9 +108,15 @@ const Header = () => {
             </ul>
           )}
           <ul className={css.registerListDesktop}>
-            {registered ? (
+            {isLogged ? (
               <li>
-                <button className={css.logoutBtn}>Log out</button>
+                <button
+                  className={clsx(
+                    homeLocation ? css.logoutBtnHome : css.logoutBtn
+                  )}
+                >
+                  Log out
+                </button>
               </li>
             ) : (
               <>
@@ -126,7 +134,7 @@ const Header = () => {
             )}
           </ul>
         </div>
-        {registered ? (
+        {isLogged ? (
           <ul className={css.navRegisteredElement}>
             <li>
               <div className={css.marketIconCont}>
@@ -207,7 +215,7 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            {registered ? (
+            {isLogged ? (
               <ul className={css.registerList}>
                 <li>
                   <button className={css.logoutBtn}>Log out</button>
