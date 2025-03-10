@@ -6,7 +6,7 @@ import MedicinePage from "../../Pages/MedicinePage/MedicinePage";
 import ProductPage from "../../Pages/ProductPage/ProductPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
-import CartPage from "../../Pages/CartPage/CartPage";
+// import CartPage from "../../Pages/CartPage/CartPage";
 import Description from "../Description/Description";
 import Reviews from "../Reviews/Reviews";
 
@@ -20,8 +20,9 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/medicine-store" element={<MedicineStorePage />} />
           <Route path="/medicine" element={<MedicinePage />} />
-          <Route path="/product" element={<ProductPage />} />
-          <Route path="product/:productId" element={<CartPage />}>
+          {/* <Route path="/product" element={<ProductPage />} /> */}
+          {/* <Route path="product/:productId" element={<CartPage />}> */}
+          <Route path="product/:productId" element={<ProductPage />}>
             <Route path="description" element={<Description />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>

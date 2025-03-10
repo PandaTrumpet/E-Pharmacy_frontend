@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts } from "./operation";
+import { getProductById, getProducts } from "./operation";
 interface IProduct {
   name: string;
   photo: string;
@@ -29,9 +29,13 @@ const products = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
-    });
+    builder
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(getProductById.fulfilled, (state, action) => {
+        state.product = action.payload;
+      });
   },
 });
 

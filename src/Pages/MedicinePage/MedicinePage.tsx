@@ -58,7 +58,10 @@ const MedicinePage = () => {
                   </div>
                   <div className={css.functionalCont}>
                     <button className={css.addBtn}>Add to cart</button>
-                    <Link to="/product/:productId" className={css.detailsLink}>
+                    <Link
+                      to={`/product/${product._id}`}
+                      className={css.detailsLink}
+                    >
                       Details
                     </Link>
                   </div>
