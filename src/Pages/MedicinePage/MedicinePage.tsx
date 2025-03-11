@@ -653,7 +653,9 @@ const MedicinePage = () => {
   const products = useSelector(productsSelector) || [];
   const totalProducts = useSelector(totalProductsSelector) || 0;
   const totalPages = Math.ceil(totalProducts / limit); // Общее количество страниц
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   useEffect(() => {
     // Загружаем продукты при изменении категории или страницы
     dispatch(

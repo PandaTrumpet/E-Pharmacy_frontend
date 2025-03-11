@@ -9,6 +9,8 @@ import plusIcon from "../../images/plus.svg";
 import minusIcon from "../../images/minus.svg";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
+import { isLoggedSelector } from "../../redux/auth/selector";
+import toast from "react-hot-toast";
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>(); // Явно указываем тип параметра
   const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +18,14 @@ const ProductPage = () => {
   const location = useLocation();
   const product = useSelector(productSelectorById);
   console.log(product?.photo);
+  const isLogged = useSelector(isLoggedSelector);
+  const handleAddToCart = () => {
+    if (isLogged) {
+      toast.success("Success");
+    } else {
+      toast.error("Not success!");
+    }
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -66,7 +76,9 @@ const ProductPage = () => {
                   />
                 </button>
               </div>
-              <button className={css.addBtn}>Add to cart</button>
+              <button className={css.addBtn} onClick={handleAddToCart}>
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
