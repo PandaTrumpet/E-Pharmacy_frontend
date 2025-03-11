@@ -16,7 +16,9 @@ const ProductPage = () => {
   const location = useLocation();
   const product = useSelector(productSelectorById);
   console.log(product?.photo);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   useEffect(() => {
     if (productId) {
       dispatch(getProductById(productId));
