@@ -218,6 +218,82 @@
     max-width: 335px;
 }
 
+
+/* Pagonation */
+.paginationList {
+    justify-content: center;
+    display: flex;
+    gap: 17px;
+    margin-top: 40px;
+}
+
+.absencePagiantionElement {
+    display: none;
+}
+
+.paginationBtn {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid rgba(29, 30, 33, 0.05);
+    background: #f7f8fa;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.paginationBtnNumber {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid rgba(29, 30, 33, 0.05);
+    background: #f7f8fa;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.paginationBtnNumber p {
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.29;
+    color: #1d1e21;
+}
+
+.paginationBtnNumber:focus {
+    background-color: #59b17a;
+}
+
+.paginationBtnNumber:focus p {
+    color: #fff;
+}
+
+.paginationBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.leftPaginationList,
+.rightPaginationList {
+    display: flex;
+    gap: 4px;
+}
+
+.middlePaginationList {
+    display: flex;
+    gap: 4px;
+}
+
+.activePage {
+    background-color: #59b17a;
+    color: #fff;
+}
+
 @media (min-width:768px) {
     .mainSection {
         padding-top: 78px;
@@ -293,6 +369,56 @@
     .listItem {
         max-width: 226px;
 
+    }
+
+    .absencePagiantionElement {
+
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        border: 1px solid rgba(29, 30, 33, 0.05);
+        background: #f7f8fa;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .absencePagiantionElement p {
+        font-weight: 700;
+        font-size: 0.75rem;
+        line-height: 1.29;
+        color: #1d1e21;
+    }
+
+
+
+
+    .absencePagiantionElement:focus {
+        background-color: #59b17a;
+    }
+
+    .absencePagiantionElement:focus p {
+        color: #fff;
+    }
+
+    /* Pafination */
+    .paginationList {
+
+        gap: 24px;
+        margin-top: 80px;
+    }
+
+    .leftPaginationList,
+    .rightPaginationList {
+
+        gap: 8px;
+    }
+
+    .middlePaginationList {
+        display: flex;
+        gap: 8px;
     }
 }
 
