@@ -5,3 +5,5 @@ export const productsLoadingSelector = (state: RootState) =>
   state.products.loading;
 export const productsErrorSelector = (state: RootState) => state.products.error;
 export const productSelectorById = (state: RootState) => state.products.product;
+export const totalProductsSelector = (state: RootState) =>
+  state.products.totalProducts;
