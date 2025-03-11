@@ -20,6 +20,9 @@ const MedicineStorePage = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  useEffect(() => {
     dispatch(getStores());
   }, [dispatch]);
   const stores = useSelector(storeSelector) || [];
