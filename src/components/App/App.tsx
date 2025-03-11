@@ -8,9 +8,10 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 // import CartPage from "../../Pages/CartPage/CartPage";
 import Description from "../Description/Description";
-import Reviews from "../Reviews/Reviews";
+// import Reviews from "../Reviews/Reviews";
 
 import { Toaster } from "react-hot-toast";
+import ProductReviews from "../ProductReviews/ProductReviews";
 const App = () => {
   return (
     <>
@@ -22,9 +23,10 @@ const App = () => {
           <Route path="/medicine" element={<MedicinePage />} />
           {/* <Route path="/product" element={<ProductPage />} /> */}
           {/* <Route path="product/:productId" element={<CartPage />}> */}
-          <Route path="product/:productId" element={<ProductPage />}>
+          <Route path="/product/:productId" element={<ProductPage />}>
             <Route path="description" element={<Description />} />
-            <Route path="reviews" element={<Reviews />} />
+            {/* <Route index element={<Description />} /> */}
+            <Route path="reviews" element={<ProductReviews />} />
           </Route>
         </Route>
 

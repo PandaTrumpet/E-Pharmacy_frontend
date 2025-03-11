@@ -1,24 +1,34 @@
 import css from "./ProductPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { getProductById } from "../../redux/products/operation";
 import { productSelectorById } from "../../redux/products/selector";
 import plusIcon from "../../images/plus.svg";
 import minusIcon from "../../images/minus.svg";
+import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>(); // Явно указываем тип параметра
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const location = useLocation();
   const product = useSelector(productSelectorById);
   console.log(product?.photo);
 
   useEffect(() => {
     if (productId) {
       dispatch(getProductById(productId));
-    }
-  }, [dispatch, productId]);
 
+      if (location.pathname === `/product/${productId}`) {
+        navigate("description", { replace: true });
+      }
+    }
+  }, [dispatch, productId, navigate, location.pathname]);
+  const activeClass = ({ isActive }: { isActive: boolean }) => {
+    return clsx(css.link, isActive && css.active);
+  };
   return (
     <section className={css.mainSection}>
       <div className={css.mainTile}>
@@ -58,7 +68,25 @@ const ProductPage = () => {
             </div>
           </div>
         </div>
-        <div></div>
+        <div className={css.descriptionAndReviewsCont}>
+          <ul className={css.navList}>
+            <li>
+              <NavLink to="description" className={activeClass}>
+                Description
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews" className={activeClass}>
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
+          <div>
+            <Suspense>
+              <Outlet />
+            </Suspense>
+          </div>
+        </div>
       </div>
     </section>
   );

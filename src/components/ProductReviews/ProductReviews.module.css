@@ -1,0 +1,123 @@
+.reviewslist {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reviewsItem {
+    border: 1px solid #f1f1f1;
+    border-radius: 20px;
+    padding: 14px 28px;
+    width: 295px;
+    height: 213px;
+    background: #fff;
+}
+
+.userCont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.userFoto {
+    border-radius: 30px;
+    width: 44px;
+    height: 44px;
+}
+
+.userFotoCont {
+    display: flex;
+    gap: 20px;
+}
+
+.infoUser {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+}
+
+.infoUser p {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(29, 30, 33, 0.6);
+}
+
+.reviewText {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #6a6a6f;
+    margin-top: 14px;
+}
+
+.starsList {
+    display: flex;
+}
+
+.starsList ul li img {
+    width: 16px;
+    height: 16px;
+}
+
+.notActive {
+    display: none;
+}
+
+.ratingCont {
+    display: flex;
+    gap: 6px;
+    max-height: 18px;
+    align-items: center;
+
+}
+
+
+@media (min-width:768px) {
+    .reviewsItem {
+
+        width: 640px;
+        height: 162px;
+    }
+
+    .name {
+
+        font-size: 1.125rem;
+
+    }
+
+    .reviewText {
+
+        font-size: 1rem;
+        line-height: 1.5;
+
+        margin-top: 16px;
+    }
+
+    .starsList {
+        gap: 2px
+    }
+
+    .notActive {
+        display: block;
+    }
+}
+
+@media(min-width:1440px) {
+    .reviewsItem {
+        width: 720px;
+    }
+
+    .reviewText {
+
+
+
+        margin-top: 20px;
+    }
+}
