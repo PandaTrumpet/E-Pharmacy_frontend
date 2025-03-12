@@ -1,8 +1,11 @@
 import { useState } from "react";
 import css from "./CartPage.module.css";
-
+import porductImage from "../../images/productImage.png";
+import plusIcon from "../../images/plus.svg";
+import minusIcon from "../../images/minus.svg";
 const CartPage = () => {
   const [selected, setSelected] = useState("cash");
+  const [quantity, setQuantity] = useState(1);
   return (
     <section className={css.mainSection}>
       <h2 className={css.title}>Cart</h2>
@@ -87,7 +90,50 @@ const CartPage = () => {
             </button>
           </form>
         </div>
-        <div className={css.productCont}></div>
+        <div className={css.productCont}>
+          <ul className={css.productList}>
+            <li className={css.productItem}>
+              <div
+                className={css.fotoCont}
+                style={{ backgroundImage: `url(${porductImage})` }}
+              ></div>
+              <div className={css.detailsCont}>
+                <div className={css.infoCont}>
+                  <div className={css.nameAndDesc}>
+                    <h3>Vitamin C Medicine</h3>
+                    <p>Antioxidant Aid for Heart Health</p>
+                  </div>
+                  <p className={css.price}>৳ 90.00</p>
+                </div>
+                <div className={css.functionalCont}>
+                  <ul className={css.btnList}>
+                    <li>
+                      <button
+                        className={css.funcBtn}
+                        onClick={() => setQuantity((prev) => prev + 1)}
+                      >
+                        <img src={plusIcon} alt="" />
+                      </button>
+                    </li>
+                    <li>
+                      <p className={css.counter}>{quantity}</p>
+                    </li>
+                    <li>
+                      <button
+                        disabled={quantity === 0}
+                        className={css.funcBtn}
+                        onClick={() => setQuantity((prev) => prev - 1)}
+                      >
+                        <img src={minusIcon} alt="" />
+                      </button>
+                    </li>
+                  </ul>
+                  <button className={css.removeBtn}>Remove</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
