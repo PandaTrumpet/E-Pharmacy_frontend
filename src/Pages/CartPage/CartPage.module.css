@@ -1,0 +1,262 @@
+.mainSection {
+    width: 375px;
+    padding-top: 69px;
+    padding-bottom: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.14;
+    color: #1d1e21;
+    margin-bottom: 40px;
+}
+
+.formCont {
+    border-radius: 27px;
+    width: 335px;
+    height: 1022px;
+    background: #fff;
+    padding: 20px;
+}
+
+.formTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+    margin-bottom: 12px;
+
+}
+
+.formText {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #6a6a6f;
+    margin-bottom: 40px;
+}
+
+.labelCont {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.styleContFirst,
+.styleContSecond {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.styleContFirst {
+    margin-bottom: 12px;
+}
+
+.styleContSecond {
+    margin-bottom: 40px;
+}
+
+.styleContFirst label,
+.styleContSecond label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #1d1e21;
+    margin-left: 18px;
+}
+
+.labelCont input {
+    border: 1px solid rgba(29, 30, 33, 0.2);
+    border-radius: 60px;
+    width: 295px;
+    height: 44px;
+
+    padding-left: 17px;
+    padding-right: 17px;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #1d1e21;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.labelCont input::placeholder {
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(29, 30, 33, 0.6);
+}
+
+
+.labelCont input:hover,
+.labelCont input:focus {
+    border: 1px solid #59b17a;
+}
+
+.paymentCont {
+    padding-top: 38px;
+    padding-bottom: 40px;
+    border-top: 1px solid rgba(29, 30, 33, 0.1);
+    border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.paymentTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+    margin-bottom: 12px;
+}
+
+.paymentText {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #6a6a6f;
+    margin-bottom: 20px;
+}
+
+
+/* Radio input */
+
+
+.radioInputCont {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.radioWrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: rgba(29, 30, 33, 0.6);
+}
+
+.radioInput {
+    display: none;
+    /* Скрываем стандартный input */
+}
+
+.radioCustom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.radioInput:checked+.radioCustom {
+    border-color: green;
+    /* Зелёный бордер */
+}
+
+.radioInput:checked+.radioCustom::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: green;
+    /* Внутренний круг */
+    border-radius: 50%;
+}
+
+.radioInput:checked+.radioCustom+span {
+    color: #1d1e21;
+    /* Тёмный цвет текста */
+    color: #1d1e21;
+}
+
+@media (min-width:768px) {
+    .mainSection {
+        padding-top: 78px;
+        padding-bottom: 120px;
+        padding-left: 32px;
+        padding-right: 32px;
+        min-width: 768px;
+    }
+
+    .title {
+        margin-bottom: 32px;
+    }
+
+    .formCont {
+        width: 704px;
+        height: 883px;
+        background: #fff;
+        padding: 40px 78px;
+    }
+
+
+    .formTitle {
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+    }
+
+    .formText {
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .styleContFirst,
+    .styleContSecond {
+        flex-direction: row;
+        gap: 14px
+    }
+
+    .styleContFirst {
+        margin-bottom: 20px;
+    }
+
+    .labelCont input {
+        width: 260px;
+    }
+
+    .paymentTitle {
+
+        font-size: 1.25rem;
+
+        margin-bottom: 20px;
+    }
+
+    .paymentText {
+
+        font-size: 1rem;
+        line-height: 1.25;
+
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width:1440px) {
+    .mainSection {
+        padding-top: 98px;
+        padding-bottom: 120px;
+        padding-left: 100px;
+        padding-right: 100px;
+        min-width: 1440px;
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    .formCont {
+        width: 628px;
+        height: 883px;
+        background: #fff;
+        padding: 40px;
+    }
+}

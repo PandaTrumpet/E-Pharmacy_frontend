@@ -17,6 +17,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import { useSelector } from "react-redux";
 import { selectModalType } from "../../redux/modal/selector";
 import SimpleModal from "../SimpleModal/SimpleModal";
+import CartPage from "../../Pages/CartPage/CartPage";
 
 const App = () => {
   const modalTypeSelect = useSelector(selectModalType);
@@ -35,13 +36,12 @@ const App = () => {
             {/* <Route index element={<Description />} /> */}
             <Route path="reviews" element={<ProductReviews />} />
           </Route>
+          <Route path="/cart" element={<CartPage />} />
         </Route>
 
         {/* Отдельные маршруты для логина и регистрации */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/loginModal" element={<LoginModal />} />
-        <Route path="/registerModal" element={<RegisterModal />} />
       </Routes>
 
       <Toaster position="top-center" toastOptions={{ duration: 1000 }} />
