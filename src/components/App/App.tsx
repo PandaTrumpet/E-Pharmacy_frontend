@@ -12,7 +12,14 @@ import Description from "../Description/Description";
 
 import { Toaster } from "react-hot-toast";
 import ProductReviews from "../ProductReviews/ProductReviews";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import { useSelector } from "react-redux";
+import { selectModalType } from "../../redux/modal/selector";
+import SimpleModal from "../SimpleModal/SimpleModal";
+
 const App = () => {
+  const modalTypeSelect = useSelector(selectModalType);
   return (
     <>
       <Routes>
@@ -33,9 +40,22 @@ const App = () => {
         {/* Отдельные маршруты для логина и регистрации */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/loginModal" element={<LoginModal />} />
+        <Route path="/registerModal" element={<RegisterModal />} />
       </Routes>
 
       <Toaster position="top-center" toastOptions={{ duration: 1000 }} />
+
+      {modalTypeSelect === "login" && (
+        <SimpleModal>
+          <LoginModal />
+        </SimpleModal>
+      )}
+      {modalTypeSelect === "register" && (
+        <SimpleModal>
+          <RegisterModal />
+        </SimpleModal>
+      )}
     </>
   );
 };

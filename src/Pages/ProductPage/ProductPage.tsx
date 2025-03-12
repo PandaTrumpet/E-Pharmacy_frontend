@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { isLoggedSelector } from "../../redux/auth/selector";
 import toast from "react-hot-toast";
+import { openModalWindow } from "../../redux/modal/slice";
 const ProductPage = () => {
   const { productId } = useParams<{ productId: string }>(); // Явно указываем тип параметра
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +24,7 @@ const ProductPage = () => {
     if (isLogged) {
       toast.success("Success");
     } else {
-      toast.error("Not success!");
+      dispatch(openModalWindow({ modalType: "login" }));
     }
   };
   useEffect(() => {
