@@ -87,6 +87,7 @@
     font-size: 0.875rem;
     line-height: 1.29;
     color: #fff;
+    cursor: pointer;
 }
 
 .toogleBtn {
@@ -106,6 +107,25 @@
     justify-content: center;
     border: none;
     background-color: transparent;
+}
+
+.emailCont,
+.nameCont,
+.phoneCont,
+.passwordCont {
+    position: relative;
+}
+
+.nameError,
+.emailError,
+.phoneError,
+.passwordError {
+    font-size: 12px;
+    color: rgb(240, 81, 81);
+    /* margin-left: 10px; */
+    position: absolute;
+    bottom: -16px;
+    left: 10px;
 }
 
 @media (min-width:768px) {

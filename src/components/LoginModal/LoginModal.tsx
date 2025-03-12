@@ -1,7 +1,7 @@
 import css from "./LoginModal.module.css";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { openModalWindow } from "../../redux/modal/slice";
+import { closeModalWindow, openModalWindow } from "../../redux/modal/slice";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ILoginFormInput } from "../../types";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,6 +29,7 @@ const LoginModal = () => {
       .unwrap()
       .then(() => {
         toast.success("Successfull login!");
+        dispatch(closeModalWindow());
       })
       .catch(() => toast.error("Email or password are wrong!"));
   };

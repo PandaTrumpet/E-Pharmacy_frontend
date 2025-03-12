@@ -86,7 +86,6 @@ const RegisterPage = () => {
             </div>
             <div className={css.phonePassword}>
               <div className={css.inputCont}>
-                {" "}
                 <input
                   {...register("phoneNumber")}
                   placeholder="Phone number"
@@ -96,7 +95,6 @@ const RegisterPage = () => {
                 )}
               </div>
               <div className={css.inputCont}>
-                {" "}
                 <input {...register("password")} placeholder="Password" />
                 {errors.password && (
                   <p className={css.error}>{errors.password.message}</p>

@@ -33,7 +33,7 @@ const authSlice = createSlice({
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.isLogged = true;
+        // state.isLogged = true;
       })
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
