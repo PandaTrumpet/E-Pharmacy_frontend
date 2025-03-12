@@ -40,16 +40,6 @@ const CartPage = () => {
               <p className={css.paymentText}>
                 You can pay us in a multiple way in our payment gateway system.
               </p>
-              {/* <div className={css.radioInputCont}>
-                <div className={css.cashRadio}>
-                  <input type="radio" />
-                  <label htmlFor="">Cash On Delivery</label>
-                </div>
-                <div className={css.bankRadio}>
-                  <input type="radio" />
-                  <label htmlFor="">Bank</label>
-                </div>
-              </div> */}
 
               <div className={css.radioInputCont}>
                 {/* Cash On Delivery */}
