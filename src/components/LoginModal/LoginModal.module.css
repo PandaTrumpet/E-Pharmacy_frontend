@@ -107,6 +107,21 @@
 }
 
 
+
+.emailInput,
+.passwordlInput {
+    position: relative;
+}
+
+.errorMail,
+.errorPassword {
+    font-size: 12px;
+    /* margin-left: 10px; */
+    position: absolute;
+    bottom: -16px;
+    left: 10px;
+}
+
 @media (min-width:768px) {
     .mainCont {
         width: 323px;
