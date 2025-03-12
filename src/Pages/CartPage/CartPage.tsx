@@ -71,6 +71,20 @@ const CartPage = () => {
                 </label>
               </div>
             </div>
+            <div className={css.orderDetailsCont}>
+              <h3 className={css.orderDetailsTitle}>Order Details</h3>
+              <p className={css.orderText}>
+                Shipping and additionnal costs are calculated based on values
+                you have entered.
+              </p>
+              <div className={css.priceCont}>
+                <p>Toital:</p>
+                <p>৳ 122.00</p>
+              </div>
+            </div>
+            <button type="submit" className={css.orderBtn}>
+              Place order
+            </button>
           </form>
         </div>
         <div className={css.productCont}></div>

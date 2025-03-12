@@ -179,6 +179,71 @@
     color: #1d1e21;
 }
 
+/* Order details */
+
+
+.orderDetailsCont {
+    margin-top: 40px;
+}
+
+.orderDetailsTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+    margin-bottom: 12px;
+}
+
+.orderText {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #6a6a6f;
+    margin-bottom: 20px;
+}
+
+.priceCont {
+    border-radius: 8px;
+    width: 295px;
+    height: 50px;
+    background: #e7f1ed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.priceCont p {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #1d1e21;
+}
+
+.orderBtn {
+    border-radius: 60px;
+    padding: 13px 32px;
+    width: 141px;
+    height: 44px;
+    background: #59b17a;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.29;
+    color: #fff;
+
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.orderBtn:hover,
+.orderBtn:active {
+    background: #3f945f;
+}
+
 @media (min-width:768px) {
     .mainSection {
         padding-top: 78px;
@@ -238,6 +303,58 @@
 
         margin-bottom: 20px;
     }
+
+    /* Order */
+
+
+    .orderDetailsTitle {
+
+        font-size: 1.25rem;
+
+        margin-bottom: 14px;
+    }
+
+    .orderText {
+
+        font-size: 1rem;
+        line-height: 1.25;
+
+        margin-bottom: 20px;
+    }
+
+
+    .priceCont {
+        width: 548px;
+        height: 65px;
+
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .priceCont p {
+
+        font-size: 1.125rem;
+
+    }
+
+    .orderBtn {
+        border-radius: 60px;
+        padding: 13px 32px;
+        width: 141px;
+        height: 44px;
+        background: #59b17a;
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1.29;
+        color: #fff;
+
+        border: none;
+        outline: none;
+        margin-top: 20px;
+        transition: background 0.3s ease-in-out;
+        cursor: pointer;
+    }
 }
 
 @media (min-width:1440px) {
@@ -259,4 +376,5 @@
         background: #fff;
         padding: 40px;
     }
+
 }
