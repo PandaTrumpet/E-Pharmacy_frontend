@@ -17,7 +17,12 @@ import { AppDispatch } from "../../redux/store";
 import { logoutUser } from "../../redux/auth/operation";
 import toast from "react-hot-toast";
 
+import { totalProductsCount } from "../../redux/orders/selector";
+
 const Header = () => {
+  const totalProducts = useSelector(totalProductsCount) || 0;
+  console.log(totalProducts);
+
   const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(isLoggedSelector);
   const [homeLocation, setHomeLocation] = useState<boolean>(false);
@@ -105,7 +110,7 @@ const Header = () => {
                   />
 
                   <div className={css.quantityShop}>
-                    <p>0</p>
+                    <p>{totalProducts}</p>
                   </div>
                 </div>
               </li>
@@ -149,7 +154,10 @@ const Header = () => {
                 <img src={market} alt="Shop icon" className={css.marketIcion} />
 
                 <div className={css.quantityShop}>
-                  <p>0</p>
+                  <p>
+                    {}
+                    {totalProducts}
+                  </p>
                 </div>
               </div>
             </li>

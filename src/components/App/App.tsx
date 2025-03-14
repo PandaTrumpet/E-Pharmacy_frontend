@@ -14,13 +14,22 @@ import { Toaster } from "react-hot-toast";
 import ProductReviews from "../ProductReviews/ProductReviews";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectModalType } from "../../redux/modal/selector";
 import SimpleModal from "../SimpleModal/SimpleModal";
 import CartPage from "../../Pages/CartPage/CartPage";
+import { AppDispatch } from "../../redux/store";
+import { useEffect } from "react";
+import { getOrders } from "../../redux/orders/operation";
+import { totalProductsCount } from "../../redux/orders/selector";
 
 const App = () => {
   const modalTypeSelect = useSelector(selectModalType);
+  const totalProducts = useSelector(totalProductsCount);
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(getOrders());
+  }, [dispatch, totalProducts]);
   return (
     <>
       <Routes>

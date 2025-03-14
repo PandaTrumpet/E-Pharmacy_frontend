@@ -1,23 +1,7 @@
-// import { createSlice } from "@reduxjs/toolkit";
-// interface IInitialState {}
-// const initialState = {
-//   orderId: "",
-//   orders: {
-//     paymentMethod: "",
-//     status: "",
-//     _id: "",
-//     ordersProduct: [],
-//   },
-// };
-// const orders = createSlice({
-//   name: "orders",
-//   initialState,
-//   reducers: {},
-// });
 import { createSlice } from "@reduxjs/toolkit";
-import { updateOrder } from "./operation";
+import { getOrders, updateOrder } from "./operation";
 
-interface IOrderProduct {
+export interface IOrderProduct {
   _id: string;
   name: string;
   photo: string;
@@ -38,9 +22,9 @@ interface IOrders {
   address: string;
   order_date: string;
   totalPrice: number;
-  productsCount: number;
+  productsCount: number | null;
   updatedAt: string;
-  totalProducts: number;
+  totalProducts: number | null;
 }
 
 interface IInitialState {
@@ -63,9 +47,9 @@ const initialState: IInitialState = {
     address: "",
     order_date: "",
     totalPrice: 0,
-    productsCount: 0,
+    productsCount: null,
     updatedAt: "",
-    totalProducts: 0,
+    totalProducts: null,
   },
   loading: false,
   error: null,
@@ -78,9 +62,13 @@ const orders = createSlice({
     // Здесь можно добавить ваши редюсеры
   },
   extraReducers: (builder) => {
-    builder.addCase(updateOrder.fulfilled, (state, action) => {
-      state.orders = action.payload;
-    });
+    builder
+      .addCase(updateOrder.fulfilled, (state, action) => {
+        state.orders = action.payload;
+      })
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.orders = action.payload;
+      });
   },
 });
 

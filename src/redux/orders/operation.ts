@@ -1,20 +1,3 @@
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// import api from "../../interceptor";
-// export const updateOrder = createAsyncThunk(
-//   "orders/updateOrder",
-
-//   async (data, thunkAPI) => {
-//     try {
-//       const response = await api.put("/cart/update", data);
-//       return response.data.data;
-//     } catch (error) {
-//       const errorMessage =
-//         error instanceof Error ? error.message : String(error);
-//       return thunkAPI.rejectWithValue(errorMessage);
-//     }
-//   }
-// );
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../interceptor";
 
@@ -46,14 +29,12 @@ interface IOrders {
 
 // Интерфейс для данных, которые передаются при обновлении заказа
 interface UpdateOrderPayload {
-  // orderId: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  paymentMethod: string;
-  // Добавьте другие поля, необходимые для обновления заказа,
-  // например: status, ordersProduct и т.д.
+  name?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  paymentMethod?: string;
+  ordersProduct: IOrderProduct[];
 }
 
 export const updateOrder = createAsyncThunk<
@@ -63,11 +44,55 @@ export const updateOrder = createAsyncThunk<
 >("orders/updateOrder", async (data, thunkAPI) => {
   try {
     const response = await api.put("/cart/update", data);
-    console.log(response.data);
 
-    return response.data.data as IOrders;
+    // if (response.data && response.data.data) {
+    //   return response.data.data as IOrders;
+    // }
+    // console.log(response.data);
+    console.log(response.data.data);
+
+    return response.data.data;
+    // return thunkAPI.rejectWithValue("Invalid response from server");
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorMessage =
+      error instanceof Error ? error.message : "An unexpected error occurred";
+    return thunkAPI.rejectWithValue(errorMessage);
+  }
+});
+
+// export const getOrders = createAsyncThunk(
+//   "orders/getOrders",
+//   async (_, thunkAPI) => {
+//     try {
+//       const response = await api.get("/cart");
+//       console.log(response.data.data[0]);
+
+//       return response.data.data[0];
+//     } catch (error) {
+//       const errorMessage =
+//         error instanceof Error ? error.message : "An unexpected error occurred";
+//       return thunkAPI.rejectWithValue(errorMessage);
+//     }
+//   }
+// );
+
+export const getOrders = createAsyncThunk<
+  IOrders,
+  void,
+  { rejectValue: string }
+>("orders/getOrders", async (_, thunkAPI) => {
+  try {
+    const response = await api.get("/cart");
+    const orders = response.data.data;
+
+    if (!Array.isArray(orders) || orders.length === 0) {
+      return thunkAPI.rejectWithValue("No orders found");
+    }
+
+    return orders[0];
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unexpected error occurred";
     return thunkAPI.rejectWithValue(errorMessage);
   }
 });

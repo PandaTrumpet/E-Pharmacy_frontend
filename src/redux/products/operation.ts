@@ -34,8 +34,9 @@ interface IProduct {
   photo: string;
   _id: string;
   suppliers: string;
-  stock: string;
-  price: string;
+  // stock: string;
+  quantity: number;
+  price: number;
   category: string;
 }
 
@@ -87,7 +88,7 @@ export const getProducts = createAsyncThunk<
 
       // ✅ Отправляем GET-запрос с параметрами
       const response = await api.get(`${baseUrl}/products`, { params });
-      console.log(response.data);
+      // console.log(response.data);
 
       return {
         products: response.data.data,

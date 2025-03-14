@@ -15,9 +15,13 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import clsx from "clsx";
 import EllipsisText from "react-ellipsis-text";
+import { updateOrder } from "../../redux/orders/operation";
+import { IOrderProduct } from "../../redux/orders/slice";
 const MedicinePage = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const handleAddCart = (product: IOrderProduct) => {
+    dispatch(updateOrder({ ordersProduct: [product] }));
+  };
   // Фильтрация и пагинация
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
@@ -144,7 +148,12 @@ const MedicinePage = () => {
                   <p className={css.price}>৳{product.price}</p>
                 </div>
                 <div className={css.functionalCont}>
-                  <button className={css.addBtn}>Add to cart</button>
+                  <button
+                    className={css.addBtn}
+                    onClick={() => handleAddCart(product)}
+                  >
+                    Add to cart
+                  </button>
                   <Link
                     to={`/product/${product._id}`}
                     className={css.detailsLink}

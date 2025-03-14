@@ -47,10 +47,11 @@ interface IProduct {
   name: string;
   photo: string;
   _id: string;
-  id?: string;
+  // id?: string;
   suppliers: string;
-  stock: string;
-  price: string;
+  quantity: number;
+  // stock: string;
+  price: number;
   category: string;
 }
 
