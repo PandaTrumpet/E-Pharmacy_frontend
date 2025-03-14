@@ -17,10 +17,10 @@ import { AppDispatch } from "../../redux/store";
 import { logoutUser } from "../../redux/auth/operation";
 import toast from "react-hot-toast";
 
-import { totalProductsCount } from "../../redux/orders/selector";
+import { totalProductsCountSelector } from "../../redux/orders/selector";
 
 const Header = () => {
-  const totalProducts = useSelector(totalProductsCount) || 0;
+  const totalProducts = useSelector(totalProductsCountSelector) || 0;
   console.log(totalProducts);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -102,17 +102,19 @@ const Header = () => {
           {isLogged && (
             <ul className={css.navRegisteredElementDesktop}>
               <li>
-                <div className={css.marketIconCont}>
-                  <img
-                    src={market}
-                    alt="Shop icon"
-                    className={css.marketIcion}
-                  />
+                <Link to="/cart">
+                  <div className={css.marketIconCont}>
+                    <img
+                      src={market}
+                      alt="Shop icon"
+                      className={css.marketIcion}
+                    />
 
-                  <div className={css.quantityShop}>
-                    <p>{totalProducts}</p>
+                    <div className={css.quantityShop}>
+                      <p>{totalProducts}</p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </li>
               <li className={clsx(css.i, homeLocation && css.iHome)}>
                 <p>I</p>
@@ -150,16 +152,19 @@ const Header = () => {
         {isLogged ? (
           <ul className={css.navRegisteredElement}>
             <li>
-              <div className={css.marketIconCont}>
-                <img src={market} alt="Shop icon" className={css.marketIcion} />
+              <Link to="/cart">
+                <div className={css.marketIconCont}>
+                  <img
+                    src={market}
+                    alt="Shop icon"
+                    className={css.marketIcion}
+                  />
 
-                <div className={css.quantityShop}>
-                  <p>
-                    {}
-                    {totalProducts}
-                  </p>
+                  <div className={css.quantityShop}>
+                    <p>{totalProducts}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </li>
             <li className={css.i}>
               <p>I</p>

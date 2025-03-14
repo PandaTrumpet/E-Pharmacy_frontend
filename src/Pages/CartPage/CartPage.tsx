@@ -1,12 +1,15 @@
-import { useState } from "react";
 import css from "./CartPage.module.css";
-import productImage from "../../images/productImage.png";
-import plusIcon from "../../images/plus.svg";
-import minusIcon from "../../images/minus.svg";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useForm } from "react-hook-form";
 import { updateOrder } from "../../redux/orders/operation";
+import {
+  addedProductsSelector,
+  totalPriceSelector,
+} from "../../redux/orders/selector";
+import CartItem from "../../components/CartItem/CartItem";
+import { IOrderProduct } from "../../redux/orders/slice";
 
 interface FormData {
   name: string;
@@ -17,6 +20,10 @@ interface FormData {
 }
 
 const CartPage = () => {
+  const addedProducts = useSelector(addedProductsSelector);
+  const totalPrice = useSelector(totalPriceSelector);
+  // console.log(addedProducts);
+
   const {
     register,
     handleSubmit,
@@ -29,20 +36,29 @@ const CartPage = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    dispatch(
-      updateOrder({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        address: data.address,
-        paymentMethod: data.paymentMethod,
-      })
-    );
+    // dispatch(
+    //   updateOrder({
+    //     name: data.name,
+    //     email: data.email,
+    //     phone: data.phone,
+    //     address: data.address,
+    //     paymentMethod: data.paymentMethod,
+    //   })
+    // );
   };
 
   const dispatch = useDispatch<AppDispatch>();
-  const [quantity, setQuantity] = useState(1);
+  const handleRemove = (id: string) => {
+    const updatedProducts = addedProducts.filter(
+      (product: IOrderProduct) => product._id !== id
+    );
 
+    dispatch(
+      updateOrder({
+        ordersProduct: updatedProducts,
+      })
+    );
+  };
   return (
     <section className={css.mainSection}>
       <h2 className={css.title}>Cart</h2>
@@ -130,7 +146,7 @@ const CartPage = () => {
               </p>
               <div className={css.priceCont}>
                 <p>Total:</p>
-                <p>৳ 122.00</p>
+                <p>৳ {totalPrice}</p>
               </div>
             </div>
             <button type="submit" className={css.orderBtn}>
@@ -140,7 +156,28 @@ const CartPage = () => {
         </div>
         <div className={css.productCont}>
           <ul className={css.productList}>
-            <li className={css.productItem}>
+            {addedProducts &&
+              addedProducts.length > 0 &&
+              addedProducts.map((product) => {
+                return (
+                  <CartItem
+                    product={product}
+                    key={product._id}
+                    onRemove={handleRemove}
+                  />
+                );
+              })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CartPage;
+
+{
+  /* <li className={css.productItem}>
               <div
                 className={css.fotoCont}
                 style={{ backgroundImage: `url(${productImage})` }}
@@ -179,12 +216,5 @@ const CartPage = () => {
                   <button className={css.removeBtn}>Remove</button>
                 </div>
               </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default CartPage;
+            </li> */
+}

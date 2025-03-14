@@ -21,11 +21,12 @@ import CartPage from "../../Pages/CartPage/CartPage";
 import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
 import { getOrders } from "../../redux/orders/operation";
-import { totalProductsCount } from "../../redux/orders/selector";
+import { totalProductsCountSelector } from "../../redux/orders/selector";
 
 const App = () => {
   const modalTypeSelect = useSelector(selectModalType);
-  const totalProducts = useSelector(totalProductsCount);
+  const totalProducts = useSelector(totalProductsCountSelector);
+
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getOrders());
