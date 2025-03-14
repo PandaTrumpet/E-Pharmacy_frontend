@@ -46,7 +46,12 @@ interface IOrders {
 
 // Интерфейс для данных, которые передаются при обновлении заказа
 interface UpdateOrderPayload {
-  orderId: string;
+  // orderId: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  paymentMethod: string;
   // Добавьте другие поля, необходимые для обновления заказа,
   // например: status, ordersProduct и т.д.
 }
@@ -58,6 +63,8 @@ export const updateOrder = createAsyncThunk<
 >("orders/updateOrder", async (data, thunkAPI) => {
   try {
     const response = await api.put("/cart/update", data);
+    console.log(response.data);
+
     return response.data.data as IOrders;
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
