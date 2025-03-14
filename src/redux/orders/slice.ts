@@ -9,6 +9,7 @@ export interface IOrderProduct {
   quantity: number;
   price: number;
   category: string;
+  remove: boolean;
 }
 
 interface IOrders {
@@ -68,6 +69,10 @@ const orders = createSlice({
       })
       .addCase(getOrders.fulfilled, (state, action) => {
         state.orders = action.payload;
+        state.loading = false;
+      })
+      .addCase(getOrders.pending, (state) => {
+        state.loading = true;
       });
   },
 });

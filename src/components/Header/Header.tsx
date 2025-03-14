@@ -17,14 +17,19 @@ import { AppDispatch } from "../../redux/store";
 import { logoutUser } from "../../redux/auth/operation";
 import toast from "react-hot-toast";
 
-import { totalProductsCountSelector } from "../../redux/orders/selector";
+import {
+  isLoadingProducts,
+  totalProductsCountSelector,
+} from "../../redux/orders/selector";
 
 const Header = () => {
   const totalProducts = useSelector(totalProductsCountSelector) || 0;
+  const isLoading = useSelector(isLoadingProducts);
   console.log(totalProducts);
 
   const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(isLoggedSelector);
+
   const [homeLocation, setHomeLocation] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const handleToggle = () => {
@@ -45,6 +50,7 @@ const Header = () => {
       setHomeLocation(false);
     }
   }, [location.pathname, setHomeLocation]);
+
   return (
     <header className={clsx(css.headerContainer, homeLocation && css.homePage)}>
       <div className={css.headerMain}>

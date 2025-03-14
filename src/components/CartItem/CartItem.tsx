@@ -15,18 +15,20 @@ export interface IOrderProduct {
   quantity: number;
   price: number;
   category: string;
+  remove: boolean;
 }
 
 interface CartItemProps {
   product: IOrderProduct;
   onRemove: (_id: string) => void;
+
   // Если нужно обновлять количество глобально, можно добавить колбэк onQuantityChange
 }
 
 const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
   const dispatch = useDispatch<AppDispatch>();
   // Инициализируем локальное состояние количеством продукта
-  const [quantity, setQuantity] = useState<number>(product.quantity || 1);
+  const [quantity, setQuantity] = useState<number>(product.quantity);
 
   const handleIncrement = () => {
     const newQuantity = quantity + 1;

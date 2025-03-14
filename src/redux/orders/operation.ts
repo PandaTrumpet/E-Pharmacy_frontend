@@ -9,6 +9,7 @@ interface IOrderProduct {
   quantity: number;
   price: number;
   category: string;
+  remove: boolean;
 }
 
 interface IOrders {
