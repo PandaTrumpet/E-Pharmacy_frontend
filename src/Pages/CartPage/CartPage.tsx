@@ -22,6 +22,8 @@ interface FormData {
 const CartPage = () => {
   const addedProducts = useSelector(addedProductsSelector);
   const totalPrice = useSelector(totalPriceSelector);
+  const updatePrice =
+    typeof totalPrice === "number" ? Number(totalPrice.toFixed(2)) : 0;
 
   const {
     register,
@@ -154,7 +156,7 @@ const CartPage = () => {
               </p>
               <div className={css.priceCont}>
                 <p>Total:</p>
-                <p>UA {totalPrice}</p>
+                <p>UA {updatePrice}</p>
               </div>
             </div>
             <button type="submit" className={css.orderBtn}>
