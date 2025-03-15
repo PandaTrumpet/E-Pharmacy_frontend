@@ -1,22 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getOrders, updateOrder } from "./operation";
-
-export interface IOrderProduct {
-  _id: string;
-  name: string;
-  photo: string;
-  suppliers: string;
-  quantity: number;
-  price: number;
-  category: string;
-  remove: boolean;
-}
+import { IProduct } from "../products/slice";
 
 interface IOrders {
   paymentMethod: string;
   status: string;
   _id: string;
-  ordersProduct: IOrderProduct[];
+  ordersProduct: IProduct[] | [];
   userId: string;
   email: string;
   phone: string;

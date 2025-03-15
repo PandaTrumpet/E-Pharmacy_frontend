@@ -25,7 +25,7 @@ import {
 const Header = () => {
   const totalProducts = useSelector(totalProductsCountSelector) || 0;
   const isLoading = useSelector(isLoadingProducts);
-  console.log(totalProducts);
+  // console.log(totalProducts);
 
   const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(isLoggedSelector);

@@ -6,20 +6,9 @@ import minusIcon from "../../images/minus.svg";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { updateOrder } from "../../redux/orders/operation";
-
-export interface IOrderProduct {
-  _id: string;
-  name: string;
-  photo: string;
-  suppliers: string;
-  quantity: number;
-  price: number;
-  category: string;
-  remove: boolean;
-}
-
+import { IProduct } from "../../redux/products/slice";
 interface CartItemProps {
-  product: IOrderProduct;
+  product: IProduct;
   onRemove: (_id: string) => void;
 
   // Если нужно обновлять количество глобально, можно добавить колбэк onQuantityChange

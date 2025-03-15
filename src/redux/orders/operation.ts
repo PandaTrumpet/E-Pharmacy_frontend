@@ -1,22 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../interceptor";
-
-interface IOrderProduct {
-  _id: string;
-  name: string;
-  photo: string;
-  suppliers: string;
-  quantity: number;
-  price: number;
-  category: string;
-  remove: boolean;
-}
+import { IProduct } from "../products/slice";
 
 interface IOrders {
   paymentMethod: string;
   status: string;
   _id: string;
-  ordersProduct: IOrderProduct[];
+  ordersProduct: IProduct[];
   userId: string;
   email: string;
   phone: string;
@@ -35,7 +25,7 @@ interface UpdateOrderPayload {
   phone?: string;
   address?: string;
   paymentMethod?: string;
-  ordersProduct: IOrderProduct[];
+  ordersProduct: IProduct[];
 }
 
 export const updateOrder = createAsyncThunk<

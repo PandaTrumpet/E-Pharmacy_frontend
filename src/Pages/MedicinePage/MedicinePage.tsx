@@ -17,9 +17,16 @@ import clsx from "clsx";
 import EllipsisText from "react-ellipsis-text";
 import { updateOrder } from "../../redux/orders/operation";
 import { IOrderProduct } from "../../redux/orders/slice";
+import { isLoggedSelector } from "../../redux/auth/selector";
+import { openModalWindow } from "../../redux/modal/slice";
 const MedicinePage = () => {
+  const isLogged = useSelector(isLoggedSelector);
   const dispatch = useDispatch<AppDispatch>();
   const handleAddCart = (product: IOrderProduct) => {
+    if (!isLogged) {
+      toast.error("You must be logged in to add product to cart");
+      dispatch(openModalWindow({ modalType: "login" }));
+    }
     dispatch(updateOrder({ ordersProduct: [product] }));
   };
   // Фильтрация и пагинация
@@ -139,8 +146,6 @@ const MedicinePage = () => {
                 <div className={css.infoCont}>
                   <div className={css.descriptionCont}>
                     <h3>
-                      {/* {product.name} */}
-
                       <EllipsisText text={product.name} length={12} />
                     </h3>
                     <p>{product.suppliers}</p>

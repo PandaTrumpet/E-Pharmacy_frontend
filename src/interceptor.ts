@@ -37,7 +37,7 @@ const refreshAccessToken = async () => {
 api.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
-    console.log(token);
+    // console.log(token);
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
