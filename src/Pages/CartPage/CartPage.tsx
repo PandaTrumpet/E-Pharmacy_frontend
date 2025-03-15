@@ -3,10 +3,11 @@ import css from "./CartPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useForm } from "react-hook-form";
-import { updateOrder } from "../../redux/orders/operation";
+import { checkoutCart, updateOrder } from "../../redux/orders/operation";
 import {
   addedProductsSelector,
   totalPriceSelector,
+  totalProductsCountSelector,
 } from "../../redux/orders/selector";
 import CartItem from "../../components/CartItem/CartItem";
 // import { IOrderProduct } from "../../redux/orders/slice";
@@ -20,6 +21,7 @@ interface FormData {
 }
 
 const CartPage = () => {
+  const count = useSelector(totalProductsCountSelector);
   const addedProducts = useSelector(addedProductsSelector);
   const totalPrice = useSelector(totalPriceSelector);
   const updatePrice =
@@ -37,15 +39,20 @@ const CartPage = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    // dispatch(
-    //   updateOrder({
-    //     name: data.name,
-    //     email: data.email,
-    //     phone: data.phone,
-    //     address: data.address,
-    //     paymentMethod: data.paymentMethod,
-    //   })
-    // );
+    dispatch(
+      checkoutCart({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        paymentMethod: data.paymentMethod,
+        ordersProduct: addedProducts || [],
+        totalPrice: updatePrice,
+        status: "Confirmed",
+        productsCount: count,
+        totalProducts: count,
+      })
+    );
   };
 
   const dispatch = useDispatch<AppDispatch>();

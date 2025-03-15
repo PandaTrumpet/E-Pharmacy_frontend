@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getOrders, updateOrder } from "./operation";
+import { checkoutCart, getOrders, updateOrder } from "./operation";
 import { IProduct } from "../products/slice";
 
 interface IOrders {
@@ -13,9 +13,9 @@ interface IOrders {
   address: string;
   order_date: string;
   totalPrice: number;
-  productsCount: number | null;
-  updatedAt: string;
-  totalProducts: number | null;
+  productsCount: number | 0;
+  updatedAt?: string;
+  totalProducts: number | 0;
 }
 
 interface IInitialState {
@@ -38,9 +38,9 @@ const initialState: IInitialState = {
     address: "",
     order_date: "",
     totalPrice: 0,
-    productsCount: null,
+    productsCount: 0,
     updatedAt: "",
-    totalProducts: null,
+    totalProducts: 0,
   },
   loading: false,
   error: null,
@@ -63,6 +63,9 @@ const orders = createSlice({
       })
       .addCase(getOrders.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(checkoutCart.fulfilled, (state) => {
+        state.loading = false;
       });
   },
 });

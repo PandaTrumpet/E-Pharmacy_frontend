@@ -16,8 +16,24 @@ interface IOrders {
   productsCount: number;
   updatedAt: string;
   totalProducts: number;
+  name: string;
 }
-
+interface IOrdersCheckout {
+  paymentMethod: string;
+  status: string;
+  _id?: string;
+  ordersProduct: IProduct[];
+  userId?: string;
+  email: string;
+  phone: string;
+  address: string;
+  order_date?: string;
+  totalPrice: number;
+  productsCount: number;
+  updatedAt?: string;
+  totalProducts: number;
+  name: string;
+}
 // Интерфейс для данных, которые передаются при обновлении заказа
 interface UpdateOrderPayload {
   name?: string;
@@ -87,3 +103,16 @@ export const getOrders = createAsyncThunk<
     return thunkAPI.rejectWithValue(errorMessage);
   }
 });
+
+export const checkoutCart = createAsyncThunk<void, IOrdersCheckout>(
+  "orders/checkoutCart",
+  async (data, thunkAPI) => {
+    try {
+      await api.post("/cart/checkout", data);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unexpected error occurred";
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
