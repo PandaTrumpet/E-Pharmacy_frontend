@@ -9,3 +9,6 @@ export const addedProductsSelector = (state: RootState) =>
 export const totalPriceSelector = (state: RootState) =>
   state.order.orders.totalPrice;
 export const isLoadingProducts = (state: RootState) => state.order.loading;
+
+export const selectOrder = (state: RootState) => state.order.orders;
+export const userIdSelector = (state: RootState) => state.order.orders.userId;

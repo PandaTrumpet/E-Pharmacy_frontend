@@ -19,6 +19,7 @@ import { updateOrder } from "../../redux/orders/operation";
 import { IOrderProduct } from "../../redux/orders/slice";
 import { isLoggedSelector } from "../../redux/auth/selector";
 import { openModalWindow } from "../../redux/modal/slice";
+// import { selectOrder, userIdSelector } from "../../redux/orders/selector";
 const MedicinePage = () => {
   const isLogged = useSelector(isLoggedSelector);
   const dispatch = useDispatch<AppDispatch>();
@@ -40,6 +41,10 @@ const MedicinePage = () => {
   const products = useSelector(productsSelector) || [];
   const totalProducts = useSelector(totalProductsSelector) || 0;
   const totalPages = Math.ceil(totalProducts / limit);
+  //
+
+  // const order = useSelector(userIdSelector);
+  // console.log(order);
 
   useEffect(() => {
     // Проверка экрана при изменении размера

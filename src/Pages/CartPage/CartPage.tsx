@@ -3,13 +3,20 @@ import css from "./CartPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useForm } from "react-hook-form";
-import { checkoutCart, updateOrder } from "../../redux/orders/operation";
+import {
+  checkoutCart,
+  deleteOrder,
+  getOrders,
+  updateOrder,
+} from "../../redux/orders/operation";
 import {
   addedProductsSelector,
+  selectOrder,
   totalPriceSelector,
   totalProductsCountSelector,
 } from "../../redux/orders/selector";
 import CartItem from "../../components/CartItem/CartItem";
+import { useNavigate } from "react-router-dom";
 // import { IOrderProduct } from "../../redux/orders/slice";
 
 interface FormData {
@@ -21,12 +28,16 @@ interface FormData {
 }
 
 const CartPage = () => {
+  const selectOrderForDelet = useSelector(selectOrder);
+  const orderId = selectOrderForDelet._id;
+  console.log(orderId);
+
   const count = useSelector(totalProductsCountSelector);
   const addedProducts = useSelector(addedProductsSelector);
   const totalPrice = useSelector(totalPriceSelector);
   const updatePrice =
     typeof totalPrice === "number" ? Number(totalPrice.toFixed(2)) : 0;
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -39,6 +50,9 @@ const CartPage = () => {
   });
 
   const onSubmit = (data: FormData) => {
+    dispatch(deleteOrder({ _id: orderId }));
+
+    navigate("/");
     dispatch(
       checkoutCart({
         name: data.name,
