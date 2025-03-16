@@ -1,18 +1,19 @@
 import css from "./CartPage.module.css";
-
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useForm } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { cartValidationSchema } from "../../validation";
 import { checkoutCart, updateOrder } from "../../redux/orders/operation";
 import {
   addedProductsSelector,
-  selectOrder,
   totalPriceSelector,
   totalProductsCountSelector,
 } from "../../redux/orders/selector";
 import CartItem from "../../components/CartItem/CartItem";
 import { useNavigate } from "react-router-dom";
-// import { IOrderProduct } from "../../redux/orders/slice";
+import toast from "react-hot-toast";
 
 interface FormData {
   name: string;
@@ -35,29 +36,40 @@ const CartPage = () => {
     reset,
     formState: { errors },
   } = useForm<FormData>({
+    mode: "onChange",
+    resolver: yupResolver(cartValidationSchema),
     defaultValues: {
       paymentMethod: "cash",
     },
   });
 
   const onSubmit = (data: FormData) => {
-    navigate("/");
-    localStorage.removeItem("orderId");
-
-    dispatch(
-      checkoutCart({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        address: data.address,
-        paymentMethod: data.paymentMethod,
-        ordersProduct: addedProducts || [],
-        totalPrice: updatePrice,
-        status: "Confirmed",
-        productsCount: count,
-        totalProducts: count,
-      })
-    );
+    if (addedProducts.length > 0) {
+      dispatch(
+        checkoutCart({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          paymentMethod: data.paymentMethod,
+          ordersProduct: addedProducts || [],
+          totalPrice: updatePrice,
+          status: "Confirmed",
+          productsCount: count,
+          totalProducts: count,
+        })
+      )
+        .unwrap()
+        .then(() => {
+          navigate("/");
+          localStorage.removeItem("orderId");
+          toast.success("Successfull sendet order!");
+          reset();
+        })
+        .catch(() => toast.error("Сheck the correctness of the data"));
+    } else {
+      toast.error("You have not added any products to the cart");
+    }
   };
 
   const dispatch = useDispatch<AppDispatch>();
@@ -100,6 +112,9 @@ const CartPage = () => {
                   placeholder="Enter text"
                   {...register("name")}
                 />
+                {errors.name && (
+                  <p className={css.error}>{errors.name.message}</p>
+                )}
               </div>
               <div className={css.labelCont}>
                 <label>Email</label>
@@ -108,6 +123,9 @@ const CartPage = () => {
                   placeholder="Enter text"
                   {...register("email")}
                 />
+                {errors.email && (
+                  <p className={css.error}>{errors.email.message}</p>
+                )}
               </div>
             </div>
             <div className={css.styleContSecond}>
@@ -118,6 +136,9 @@ const CartPage = () => {
                   placeholder="Enter text"
                   {...register("phone")}
                 />
+                {errors.phone && (
+                  <p className={css.error}>{errors.phone.message}</p>
+                )}
               </div>
               <div className={css.labelCont}>
                 <label>Address</label>
@@ -126,6 +147,9 @@ const CartPage = () => {
                   placeholder="Enter text"
                   {...register("address")}
                 />
+                {errors.address && (
+                  <p className={css.error}>{errors.address.message}</p>
+                )}
               </div>
             </div>
             <div className={css.paymentCont}>
@@ -134,7 +158,6 @@ const CartPage = () => {
                 You can pay us in a multiple way in our payment gateway system.
               </p>
               <div className={css.radioInputCont}>
-                {/* Cash On Delivery */}
                 <label className={css.radioWrapper}>
                   <input
                     {...register("paymentMethod")}
@@ -146,7 +169,7 @@ const CartPage = () => {
                   <div className={css.radioCustom}></div>
                   <span>Cash On Delivery</span>
                 </label>
-                {/* Bank */}
+
                 <label className={css.radioWrapper}>
                   <input
                     {...register("paymentMethod")}

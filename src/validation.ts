@@ -26,3 +26,21 @@ export const registerSchema = yup.object().shape({
     .min(5, "Password must be at least 5 characters")
     .required("Password is required"),
 });
+
+export const cartValidationSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: yup
+    .string()
+    .required("Phone number is required")
+    .matches(/^\d+$/, "Phone number must contain only digits")
+    .min(8, "Phone number must be at least 8 digits"),
+  address: yup.string().required("Address is required"),
+  paymentMethod: yup.string().required("Payment method is required"),
+});

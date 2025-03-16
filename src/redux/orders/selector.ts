@@ -5,7 +5,7 @@ export const totalProductsCountSelector = (state: RootState) =>
 export const totalProductsPriceSelector = (state: RootState) =>
   state.order.orders.totalPrice || 0;
 export const addedProductsSelector = (state: RootState) =>
-  state.order.orders.ordersProduct || [];
+  state.order.orders.ordersProduct;
 export const totalPriceSelector = (state: RootState) =>
   state.order.orders.totalPrice || 0;
 export const isLoadingProducts = (state: RootState) => state.order.loading;
