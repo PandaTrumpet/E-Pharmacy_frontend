@@ -28,8 +28,8 @@ interface FormData {
 }
 
 const CartPage = () => {
-  const selectOrderForDelet = useSelector(selectOrder);
-  const orderId = selectOrderForDelet._id;
+  const order = useSelector(selectOrder);
+  const orderId = order._id;
   console.log(orderId);
 
   const count = useSelector(totalProductsCountSelector);
@@ -50,8 +50,6 @@ const CartPage = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    dispatch(deleteOrder({ _id: orderId }));
-
     navigate("/");
     dispatch(
       checkoutCart({
@@ -67,6 +65,7 @@ const CartPage = () => {
         totalProducts: count,
       })
     );
+    dispatch(deleteOrder({ _id: orderId }));
   };
 
   const dispatch = useDispatch<AppDispatch>();

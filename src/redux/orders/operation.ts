@@ -95,7 +95,7 @@ export const getOrders = createAsyncThunk<
     if (!Array.isArray(orders) || orders.length === 0) {
       return thunkAPI.rejectWithValue("No orders found");
     }
-    console.log(response.data.data[0]);
+    // console.log(response.data.data[0]);
 
     return orders[0];
   } catch (error) {

@@ -65,6 +65,7 @@ const orders = createSlice({
         state.loading = true;
       })
       .addCase(checkoutCart.fulfilled, (state) => {
+        // state.orders = {};
         state.loading = false;
       });
   },
