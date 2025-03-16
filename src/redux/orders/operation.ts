@@ -34,7 +34,7 @@ interface IOrdersCheckout {
   totalProducts: number;
   name: string;
 }
-// Интерфейс для данных, которые передаются при обновлении заказа
+
 interface UpdateOrderPayload {
   name?: string;
   email?: string;
@@ -56,7 +56,6 @@ export const updateOrder = createAsyncThunk<
     console.log(response.data.data.orders);
 
     return response.data.data.orders;
-    // return thunkAPI.rejectWithValue("Invalid response from server");
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unexpected error occurred";
@@ -68,7 +67,6 @@ export const checkoutCart = createAsyncThunk<void, IOrdersCheckout>(
   "orders/checkoutCart",
   async (data, thunkAPI) => {
     try {
-      localStorage.removeItem("orderId");
       await api.post("/cart/checkout", data);
     } catch (error) {
       const errorMessage =
@@ -88,7 +86,7 @@ export const getOrders = createAsyncThunk<
 
     const orderId = localStorage.getItem("orderId");
 
-    const getOrder = orders.find((el: any) => el._id === orderId);
+    const getOrder = orders.find((el: IOrders) => el._id === orderId);
     console.log(getOrder);
     if (getOrder) {
       return getOrder;
@@ -106,8 +104,6 @@ export const deleteOrder = createAsyncThunk<void, { orderId: string }>(
   "orders/deleteOrder",
   async (orderId, thunkAPI) => {
     try {
-      // console.log(orderId);
-
       await api.post("/cart/delete", orderId);
     } catch (error) {
       const errorMessage =

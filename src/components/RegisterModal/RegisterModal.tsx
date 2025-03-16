@@ -8,7 +8,7 @@ import { registerSchema } from "../../validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerUser } from "../../redux/auth/operation";
 import toast from "react-hot-toast";
-// import { MdClose } from "react-icons/md";
+
 const RegisterModal = () => {
   const dispatch = useDispatch<AppDispatch>();
   const handleToogle = () => {
@@ -85,9 +85,6 @@ const RegisterModal = () => {
           </button>
         </div>
       </form>
-      {/* <button className={css.closeBtn}>
-        <MdClose />
-      </button> */}
     </div>
   );
 };

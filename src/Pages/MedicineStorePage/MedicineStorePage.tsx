@@ -12,12 +12,8 @@ import star from "../../images/star.svg";
 import location from "../../images/location.svg";
 import phone from "../../images/phone.svg";
 import { Link } from "react-router-dom";
-// import { isLoggedSelector } from "../../redux/auth/selector";
 
 const MedicineStorePage = () => {
-  // const isLogged = useSelector(isLoggedSelector);
-  // console.log(isLogged);
-
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,7 +22,6 @@ const MedicineStorePage = () => {
     dispatch(getStores());
   }, [dispatch]);
   const stores = useSelector(storeSelector) || [];
-  // console.log(stores);
 
   return (
     <section className={css.mainSection}>
@@ -104,49 +99,6 @@ const MedicineStorePage = () => {
             );
           })}
       </ul>
-      {/* <li className={css.storeItem}>
-        <div className={css.storeCont}>
-          <div className={css.flexCont}>
-            <div>
-              <p className={css.storeName}>Huge Sale</p>
-              <ul className={css.infoList}>
-                <li className={css.locationItem}>
-                  <img
-                    src={location}
-                    alt="Location  icon"
-                    className={css.locationIcon}
-                  />
-                  <div className={css.addressCont}>
-                    <p className={css.address}>Kretoria F45</p>
-                    <p className={css.city}>Castlerea</p>
-                  </div>
-                </li>
-                <li className={css.phoneItem}>
-                  <img src={phone} alt="Phone icon" className={css.phoneIcon} />
-                  <p className={css.phone}>595-08-2102</p>
-
-                  <img src={upperElement} alt="" className={css.firstElement} />
-                  <img
-                    src={middleElement}
-                    alt=""
-                    className={css.secondElement}
-                  />
-                  <img src={downElement} alt="" className={css.thirdElement} />
-                </li>
-              </ul>
-              <button className={css.visitBtn}>Viisit Store</button>
-            </div>
-
-            <div className={css.storeInfo}>
-              <div className={css.storeRating}>
-                <img src={star} alt="Rating icon" />
-                <p className={css.ratingNumber}>2</p>
-              </div>
-              <p className={css.storeStatus}>Open</p>
-            </div>
-          </div>
-        </div>
-      </li> */}
     </section>
   );
 };

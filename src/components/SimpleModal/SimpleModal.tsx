@@ -27,7 +27,6 @@ const SimpleModal: React.FC<SimpleModalProps> = ({ children }) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectModal]);
 
   const closedModal = () => {

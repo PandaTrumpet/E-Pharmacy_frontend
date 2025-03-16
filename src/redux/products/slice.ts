@@ -15,10 +15,10 @@ export interface IProduct {
 interface IInitialState {
   loading: boolean;
   error: string | null;
-  products: IProduct[]; // Убрали `null`, т.к. массив по умолчанию
+  products: IProduct[];
   product: IProduct | null;
-  totalProducts: number; // Добавили общее количество товаров для пагинации
-  currentPage: number; // Добавили текущую страницу
+  totalProducts: number;
+  currentPage: number;
 }
 
 const initialState: IInitialState = {
@@ -26,15 +26,14 @@ const initialState: IInitialState = {
   product: null,
   loading: false,
   error: null,
-  totalProducts: 0, // Изначально 0
-  currentPage: 1, // Начальная страница
+  totalProducts: 0,
+  currentPage: 1,
 };
 
 const products = createSlice({
   name: "products",
   initialState,
   reducers: {
-    // Экшен для обновления текущей страницы (для пагинации)
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
@@ -46,8 +45,8 @@ const products = createSlice({
         state.error = null;
       })
       .addCase(getProducts.fulfilled, (state, action) => {
-        state.products = action.payload.products; // Берем только товары
-        state.totalProducts = action.payload.total; // Общее количество товаров
+        state.products = action.payload.products;
+        state.totalProducts = action.payload.total;
         state.loading = false;
       })
       .addCase(getProducts.rejected, (state, action) => {
@@ -60,5 +59,5 @@ const products = createSlice({
   },
 });
 
-export const { setCurrentPage } = products.actions; // Экспорт экшена для обновления страницы
+export const { setCurrentPage } = products.actions;
 export default products.reducer;

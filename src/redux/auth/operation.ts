@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk<
 >("auth/loginUser", async (data, thunkAPI) => {
   try {
     const response = await api.post("/user/login", data, {
-      withCredentials: true, // Отправляет `cookies` на сервер
+      withCredentials: true,
     });
     const accessToken = response.data.data.accessToken;
     localStorage.setItem("accessToken", accessToken);
@@ -65,7 +65,7 @@ export const logoutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await api.get("/user/logout");
-      localStorage.removeItem("accessToken"); // Удаляем токен полностью
+      localStorage.removeItem("accessToken");
       delete api.defaults.headers.common["Authorization"];
     } catch (error) {
       const errorMessage =

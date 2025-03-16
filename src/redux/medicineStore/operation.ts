@@ -7,7 +7,7 @@ export const getStores = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(`${baseUrl}/stores`);
-      // console.log(response.data.data);
+
       return response.data.data;
     } catch (error) {
       const errorMessage =

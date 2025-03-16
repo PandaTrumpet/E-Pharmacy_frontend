@@ -23,8 +23,6 @@ const LoginModal = () => {
     mode: "onSubmit",
   });
   const onSubmit: SubmitHandler<ILoginFormInput> = (data) => {
-    // console.log(data);
-
     dispatch(loginUser({ email: data.email, password: data.password }))
       .unwrap()
       .then(() => {

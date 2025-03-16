@@ -3,12 +3,7 @@ import css from "./CartPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useForm } from "react-hook-form";
-import {
-  checkoutCart,
-  deleteOrder,
-  getOrders,
-  updateOrder,
-} from "../../redux/orders/operation";
+import { checkoutCart, updateOrder } from "../../redux/orders/operation";
 import {
   addedProductsSelector,
   selectOrder,
@@ -28,10 +23,6 @@ interface FormData {
 }
 
 const CartPage = () => {
-  const order = useSelector(selectOrder);
-  const orderId = localStorage.getItem("orderId");
-  console.log(orderId);
-
   const count = useSelector(totalProductsCountSelector);
   const addedProducts = useSelector(addedProductsSelector);
   const totalPrice = useSelector(totalPriceSelector);
@@ -52,7 +43,7 @@ const CartPage = () => {
   const onSubmit = (data: FormData) => {
     navigate("/");
     localStorage.removeItem("orderId");
-    // dispatch(deleteOrder({ _id: orderId }));
+
     dispatch(
       checkoutCart({
         name: data.name,

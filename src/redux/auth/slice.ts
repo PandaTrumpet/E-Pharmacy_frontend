@@ -33,21 +33,18 @@ const authSlice = createSlice({
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        // state.isLogged = true;
       })
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.isRefreshing = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        // state.user = action.payload;
         state.isLogged = true;
         state.accessToken = action.payload.accessToken;
         state.isRefreshing = false;
       })
       .addCase(loginUser.rejected, (state) => {
         state.isRefreshing = false;
-        // state.error = action.error.message;
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;

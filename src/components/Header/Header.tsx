@@ -17,15 +17,10 @@ import { AppDispatch } from "../../redux/store";
 import { logoutUser } from "../../redux/auth/operation";
 import toast from "react-hot-toast";
 
-import {
-  isLoadingProducts,
-  totalProductsCountSelector,
-} from "../../redux/orders/selector";
+import { totalProductsCountSelector } from "../../redux/orders/selector";
 
 const Header = () => {
   const totalProducts = useSelector(totalProductsCountSelector) || 0;
-  const isLoading = useSelector(isLoadingProducts);
-  // console.log(totalProducts);
 
   const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(isLoggedSelector);
@@ -80,20 +75,12 @@ const Header = () => {
         <nav>
           <ul className={css.navMenu}>
             <li className={css.homeLink}>
-              <NavLink
-                to="/"
-                // className={clsx(css.link, css.first)}
-                className={buildLinkClass}
-              >
+              <NavLink to="/" className={buildLinkClass}>
                 Home
               </NavLink>
             </li>
             <li className={css.storeLink}>
-              <NavLink
-                to="/medicine-store"
-                // className={clsx(css.link, css.second)}
-                className={buildLinkClass}
-              >
+              <NavLink to="/medicine-store" className={buildLinkClass}>
                 Medicine store
               </NavLink>
             </li>
@@ -216,20 +203,12 @@ const Header = () => {
             </button>
             <ul className={css.mobileMenuList}>
               <li className={css.homeLink} onClick={() => setIsMobile(false)}>
-                <NavLink
-                  to="/"
-                  // className={clsx(css.link, css.first)}
-                  className={buildLinkClass}
-                >
+                <NavLink to="/" className={buildLinkClass}>
                   Home
                 </NavLink>
               </li>
               <li className={css.storeLink} onClick={() => setIsMobile(false)}>
-                <NavLink
-                  to="/medicine-store"
-                  // className={clsx(css.link, css.second)}
-                  className={buildLinkClass}
-                >
+                <NavLink to="/medicine-store" className={buildLinkClass}>
                   Medicine store
                 </NavLink>
               </li>
@@ -262,26 +241,6 @@ const Header = () => {
                 </li>
               </ul>
             )}
-            {/* <ul className={css.registerList}>
-              {registered ? (
-                <li>
-                  <button className={css.logoutBtn}>Log out</button>
-                </li>
-              ) : (
-                <>
-                  <li>
-                    <Link to="/register" className={css.registerBtn}>
-                      Register
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/login" className={css.loginBtn}>
-                      Login
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul> */}
           </div>
         </nav>
       )}

@@ -10,23 +10,21 @@ import minusIcon from "../../images/minus.svg";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { isLoggedSelector } from "../../redux/auth/selector";
-// import toast from "react-hot-toast";
-// import { openModalWindow } from "../../redux/modal/slice";
-import { IOrderProduct } from "../../redux/orders/slice";
 import { updateOrder } from "../../redux/orders/operation";
 import toast from "react-hot-toast";
 import { openModalWindow } from "../../redux/modal/slice";
 import { addedProductsSelector } from "../../redux/orders/selector";
+import { IProduct } from "../../redux/products/slice";
 const ProductPage = () => {
   const addedProducts = useSelector(addedProductsSelector);
-  const { productId } = useParams<{ productId: string }>(); // Явно указываем тип параметра
+  const { productId } = useParams<{ productId: string }>();
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const location = useLocation();
   const productById = useSelector(productSelectorById);
-  // console.log(product?.photo);
+
   const isLogged = useSelector(isLoggedSelector);
-  const addCart = (product: IOrderProduct) => {
+  const addCart = (product: IProduct) => {
     if (!isLogged) {
       toast.error("You must be logged in to add product to cart");
       dispatch(openModalWindow({ modalType: "login" }));
@@ -57,29 +55,11 @@ const ProductPage = () => {
   const handleDecrement = () => {
     setQuantityByProduct((prev) => prev - 1);
   };
-  // const addProductHandle = (productId: string) => {
-  //   const product = addedProducts.some((el) => el._id === productId);
-  //   console.log(product);
-
-  //   if (!product) {
-  //     handleAddCart({
-  //       ...productById,
-  //       quantity: quantityByProduct,
-  //     });
-  //   } else {
-  //     handleAddCart({
-  //       ...productById,
-  //       quantity: quantityByProduct + productById!.quantity,
-  //     });
-  //   }
-  // };
 
   const addProductHandle = (prodId: string) => {
-    // Ищем продукт в корзине
     const existingProduct = addedProducts.find((el) => el._id === prodId);
 
     if (!existingProduct) {
-      // Если продукта нет в корзине – добавляем его с количеством из локального состояния
       if (productById) {
         addCart({
           ...productById,
@@ -87,12 +67,10 @@ const ProductPage = () => {
         });
       }
     } else {
-      // Если продукт уже есть – прибавляем к существующему количеству новое значение
       if (productById) {
         addCart({
           ...productById,
-          // Используем количество из корзины (existingProduct.quantity)
-          // плюс новое количество из локального состояния
+
           quantity: existingProduct.quantity! + quantityByProduct,
         });
       }
@@ -111,10 +89,13 @@ const ProductPage = () => {
           <div className={css.productDescriptionCont}>
             <div className={css.productDetailsCont}>
               <div className={css.nameCont}>
-                <h3>Moringa</h3>
-                <p>Brand: Roofing (Asphalt)</p>
+                <h3>{productById?.name}</h3>
+                <p>
+                  Brand: {}
+                  {productById?.suppliers}
+                </p>
               </div>
-              <p className={css.price}>৳{productById?.price}</p>
+              <p className={css.price}>UA {productById?.price}</p>
             </div>
             <div className={css.productFunctional}>
               <div className={css.countCont}>
@@ -140,14 +121,6 @@ const ProductPage = () => {
               </div>
               <button
                 className={css.addBtn}
-                // onClick={() => {
-                //   if (productById) {
-                //     handleAddCart({
-                //       ...productById,
-                //       quantity: quantityByProduct,
-                //     });
-                //   }
-                // }}
                 onClick={() => addProductHandle(productId!)}
               >
                 Add to cart

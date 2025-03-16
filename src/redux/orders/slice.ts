@@ -19,14 +19,14 @@ interface IOrders {
 }
 
 interface IInitialState {
-  // orderId: string;
+  orderId: string;
   orders: IOrders;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IInitialState = {
-  // orderId: "",
+  orderId: "",
   orders: {
     paymentMethod: "",
     status: "",
@@ -49,9 +49,7 @@ const initialState: IInitialState = {
 const orders = createSlice({
   name: "orders",
   initialState,
-  reducers: {
-    // Здесь можно добавить ваши редюсеры
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(updateOrder.fulfilled, (state, action) => {

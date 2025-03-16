@@ -16,38 +16,32 @@ import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import clsx from "clsx";
 import EllipsisText from "react-ellipsis-text";
 import { updateOrder } from "../../redux/orders/operation";
-import { IOrderProduct } from "../../redux/orders/slice";
+
 import { isLoggedSelector } from "../../redux/auth/selector";
 import { openModalWindow } from "../../redux/modal/slice";
-// import { selectOrder, userIdSelector } from "../../redux/orders/selector";
+import { IProduct } from "../../redux/products/slice";
+
 const MedicinePage = () => {
   const isLogged = useSelector(isLoggedSelector);
   const dispatch = useDispatch<AppDispatch>();
-  const handleAddCart = (product: IOrderProduct) => {
+  const handleAddCart = (product: IProduct) => {
     if (!isLogged) {
       toast.error("You must be logged in to add product to cart");
       dispatch(openModalWindow({ modalType: "login" }));
     }
     dispatch(updateOrder({ ordersProduct: [product] }));
   };
-  // Фильтрация и пагинация
+
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const limit = 12;
-
-  // Получаем данные из Redux
   const products = useSelector(productsSelector) || [];
   const totalProducts = useSelector(totalProductsSelector) || 0;
   const totalPages = Math.ceil(totalProducts / limit);
-  //
-
-  // const order = useSelector(userIdSelector);
-  // console.log(order);
 
   useEffect(() => {
-    // Проверка экрана при изменении размера
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -155,7 +149,7 @@ const MedicinePage = () => {
                     </h3>
                     <p>{product.suppliers}</p>
                   </div>
-                  <p className={css.price}>৳{product.price}</p>
+                  <p className={css.price}>UA {product.price}</p>
                 </div>
                 <div className={css.functionalCont}>
                   <button

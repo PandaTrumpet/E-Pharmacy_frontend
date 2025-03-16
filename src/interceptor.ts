@@ -1,17 +1,14 @@
 import axios from "axios";
 import { baseUrl } from "./baseUrl";
 
-// Создаём экземпляр Axios
 const api = axios.create({
   baseURL: baseUrl,
   headers: { "Content-Type": "application/json" },
-  withCredentials: true, // Включаем отправку `cookies`
+  withCredentials: true,
 });
 
-// Функция для получения `accessToken`
 const getAccessToken = () => localStorage.getItem("accessToken");
 
-// Функция для обновления `accessToken`
 const refreshAccessToken = async () => {
   try {
     const response = await axios.post(
@@ -28,16 +25,14 @@ const refreshAccessToken = async () => {
     console.error("Ошибка обновления токена", error);
     delete api.defaults.headers.common["Authorization"];
     localStorage.removeItem("accessToken");
-    // window.location.href = "/login"; // Перенаправление на страницу логина
+
     return null;
   }
 };
 
-// Добавляем Interceptor перед отправкой запроса
 api.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
-    // console.log(token);
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -47,22 +42,20 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Добавляем Interceptor для обработки 401 (Unauthorized)
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
 
-    // Если ошибка 401 (Unauthorized) и токен не обновлялся
     if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true; // Помечаем, что уже пытались обновить токен
+      originalRequest._retry = true;
 
       const newAccessToken = await refreshAccessToken();
 
       if (newAccessToken) {
         api.defaults.headers.Authorization = `Bearer ${newAccessToken}`;
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return api(originalRequest); // Повторяем запрос с новым токеном
+        return api(originalRequest);
       }
     }
 

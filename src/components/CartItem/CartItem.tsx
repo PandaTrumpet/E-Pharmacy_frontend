@@ -1,22 +1,21 @@
 import { useState } from "react";
 import React from "react";
-import css from "./CartItem.module.css"; // Создайте отдельный CSS-файл или используйте общий
+import css from "./CartItem.module.css";
 import plusIcon from "../../images/plus.svg";
 import minusIcon from "../../images/minus.svg";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { updateOrder } from "../../redux/orders/operation";
 import { IProduct } from "../../redux/products/slice";
+import EllipsisText from "react-ellipsis-text";
 interface CartItemProps {
   product: IProduct;
   onRemove: (_id: string) => void;
-
-  // Если нужно обновлять количество глобально, можно добавить колбэк onQuantityChange
 }
 
 const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
   const dispatch = useDispatch<AppDispatch>();
-  // Инициализируем локальное состояние количеством продукта
+
   const [quantity, setQuantity] = useState<number>(product.quantity);
 
   const handleIncrement = () => {
@@ -24,10 +23,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
     setQuantity(newQuantity);
     dispatch(
       updateOrder({
-        // Передаём массив с одним продуктом, у которого обновлён quantity
         ordersProduct: [{ ...product, quantity: newQuantity }],
-        // Если в payload требуются и другие поля (например, name, email и т.д.),
-        // их можно добавить или сделать опциональными в интерфейсе UpdateOrderPayload
       })
     );
   };
@@ -53,10 +49,12 @@ const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
       <div className={css.detailsCont}>
         <div className={css.infoCont}>
           <div className={css.nameAndDesc}>
-            <h3>{product.name}</h3>
+            <h3>
+              <EllipsisText text={product.name} length={12} />
+            </h3>
             <p>{product.suppliers}</p>
           </div>
-          <p className={css.price}>৳ {product.price}</p>
+          <p className={css.price}>UA {product.price}</p>
         </div>
         <div className={css.functionalCont}>
           <ul className={css.btnList}>
@@ -90,4 +88,4 @@ const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
   );
 };
 
-export default React.memo(CartItem);
+export default CartItem;
