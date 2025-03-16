@@ -67,18 +67,21 @@ const LoginPage = () => {
           </div>
           <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
             <div className={css.inputCont}>
-              <input {...register("email")} placeholder="Email address" />
-              {errors.email && (
-                <p className={css.error}>{errors.email.message}</p>
-              )}
-              <input {...register("password")} placeholder="Password" />
-              {errors.password && (
-                <p className={css.error}>{errors.password.message}</p>
-              )}
+              <div className={css.positionCont}>
+                <input {...register("email")} placeholder="Email address" />
+                {errors.email && (
+                  <p className={css.error}>{errors.email.message}</p>
+                )}
+              </div>
+              <div className={css.positionCont}>
+                <input {...register("password")} placeholder="Password" />
+                {errors.password && (
+                  <p className={css.error}>{errors.password.message}</p>
+                )}
+              </div>
             </div>
             <div className={css.loginBtnCont}>
               <button type="submit" disabled={isSubmitting}>
-                {" "}
                 {isSubmitting ? "Logging in..." : "Login"}
               </button>
               <Link to="/register" className={css.link}>

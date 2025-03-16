@@ -346,6 +346,20 @@
     line-height: 1;
     text-decoration: underline;
     text-decoration-skip-ink: none;
+    color: #59b17a;
+    background: transparent;
+    border: none;
+    outline-color: transparent;
+
+    cursor: pointer;
+}
+
+.loginBtnHome {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
     color: #f1f1f1;
     background: #59b17a;
     border: none;

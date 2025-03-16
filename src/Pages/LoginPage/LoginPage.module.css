@@ -147,10 +147,19 @@
     right: 0;
 }
 
+.positionCont {
+    position: relative;
+}
+
 .error {
     font-size: 12px;
-    margin-left: 10px;
+    position: absolute;
+    bottom: -13px;
+    left: 10px;
+    color: rgb(240, 81, 81);
 }
+
+
 
 @media (min-width: 768px) {
 

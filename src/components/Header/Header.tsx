@@ -134,7 +134,12 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/login" className={css.loginBtn}>
+                  <Link
+                    to="/login"
+                    className={clsx(
+                      homeLocation ? css.loginBtnHome : css.loginBtn
+                    )}
+                  >
                     Login
                   </Link>
                 </li>
