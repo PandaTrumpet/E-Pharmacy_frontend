@@ -16,7 +16,7 @@ import { FaAnglesLeft, FaAnglesRight } from "react-icons/fa6";
 import clsx from "clsx";
 import EllipsisText from "react-ellipsis-text";
 import { updateOrder } from "../../redux/orders/operation";
-
+import fotoPill from "../../images/productPill.jpg";
 import { isLoggedSelector } from "../../redux/auth/selector";
 import { openModalWindow } from "../../redux/modal/slice";
 import { IProduct } from "../../redux/products/slice";
@@ -140,7 +140,7 @@ const MedicinePage = () => {
             <li key={product._id} className={css.listItem}>
               <div
                 className={css.productImage}
-                style={{ backgroundImage: `url(${product.photo})` }}
+                style={{ backgroundImage: `url(${fotoPill})` }}
               ></div>
               <div className={css.mainInfoCont}>
                 <div className={css.infoCont}>
