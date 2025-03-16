@@ -20,6 +20,7 @@ import { useEffect } from "react";
 import { getOrders } from "../../redux/orders/operation";
 import { totalProductsCountSelector } from "../../redux/orders/selector";
 import { isLoggedSelector } from "../../redux/auth/selector";
+import PrivateRoute from "../PrivateRoute";
 
 const App = () => {
   const isLogged = useSelector(isLoggedSelector);
@@ -47,7 +48,14 @@ const App = () => {
             <Route path="description" element={<Description />} />
             <Route path="reviews" element={<ProductReviews />} />
           </Route>
-          <Route path="/cart" element={<CartPage />} />
+
+          <Route
+            path="/cart"
+            element={
+              <PrivateRoute component={<CartPage />} redirectTo="/login" />
+            }
+          />
+          {/* <Route path="/cart" element={<CartPage />} /> */}
         </Route>
 
         <Route path="/login" element={<LoginPage />} />
