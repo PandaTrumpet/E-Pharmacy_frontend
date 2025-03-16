@@ -29,6 +29,7 @@ const ProductPage = () => {
     if (!isLogged) {
       toast.error("You must be logged in to add product to cart");
       dispatch(openModalWindow({ modalType: "login" }));
+      return;
     }
     dispatch(updateOrder({ ordersProduct: [product] }));
   };
