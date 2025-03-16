@@ -50,11 +50,19 @@ const products = createSlice({
         state.loading = false;
       })
       .addCase(getProducts.rejected, (state, action) => {
-        state.error = action.payload ?? "Failed to load products";
+        state.error = action.payload || "Failed to load products";
         state.loading = false;
       })
       .addCase(getProductById.fulfilled, (state, action) => {
         state.product = action.payload;
+        state.loading = false;
+      })
+      .addCase(getProductById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getProductById.rejected, (state, action) => {
+        state.error = action.payload || "Failed to load product";
+        state.loading = false;
       });
   },
 });
