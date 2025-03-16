@@ -24,6 +24,7 @@ const ProductPage = () => {
   const productById = useSelector(productSelectorById);
 
   const isLogged = useSelector(isLoggedSelector);
+
   const addCart = (product: IProduct) => {
     if (!isLogged) {
       toast.error("You must be logged in to add product to cart");

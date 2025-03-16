@@ -19,15 +19,21 @@ import { AppDispatch } from "../../redux/store";
 import { useEffect } from "react";
 import { getOrders } from "../../redux/orders/operation";
 import { totalProductsCountSelector } from "../../redux/orders/selector";
+import { isLoggedSelector } from "../../redux/auth/selector";
 
 const App = () => {
+  const isLogged = useSelector(isLoggedSelector);
   const modalTypeSelect = useSelector(selectModalType);
   const totalProducts = useSelector(totalProductsCountSelector) || 0;
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    const orderId = localStorage.getItem("orderId");
-    if (orderId) {
-      dispatch(getOrders());
+    if (!isLogged) {
+      return;
+    } else {
+      const orderId = localStorage.getItem("orderId");
+      if (orderId) {
+        dispatch(getOrders());
+      }
     }
   }, [dispatch, totalProducts]);
   return (
