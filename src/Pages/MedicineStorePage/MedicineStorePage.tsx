@@ -12,6 +12,7 @@ import star from "../../images/star.svg";
 import location from "../../images/location.svg";
 import phone from "../../images/phone.svg";
 import { Link } from "react-router-dom";
+import EllipsisText from "react-ellipsis-text";
 
 const MedicineStorePage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +36,10 @@ const MedicineStorePage = () => {
                 <div className={css.storeCont}>
                   <div className={css.flexCont}>
                     <div>
-                      <p className={css.storeName}>{store.name}</p>
+                      <p className={css.storeName}>
+                        {" "}
+                        <EllipsisText text={store.name} length={23} />
+                      </p>
                       <ul className={css.infoList}>
                         <li className={css.locationItem}>
                           <img
