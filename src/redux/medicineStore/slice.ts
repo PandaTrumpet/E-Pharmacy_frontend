@@ -5,7 +5,7 @@ import { getStores } from "./operation";
 interface IInitialState {
   stores: IStores[] | null;
   loading: boolean;
-  error: string | null;
+  error: null | string;
 }
 const initialState: IInitialState = {
   stores: [],
@@ -17,9 +17,18 @@ const stores = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getStores.fulfilled, (state, action) => {
-      state.stores = action.payload;
-    });
+    builder
+      .addCase(getStores.fulfilled, (state, action) => {
+        state.stores = action.payload;
+        state.loading = false;
+      })
+      .addCase(getStores.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getStores.rejected, (state, action) => {
+        state.error = action.payload || "Failed to load stores";
+        state.loading = false;
+      });
   },
 });
 

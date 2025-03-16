@@ -12,7 +12,7 @@ export interface IStores {
 interface IInitialState {
   stores: IStores[] | null;
   loading: boolean;
-  error: string | null;
+  error: null | string;
 }
 const initialState: IInitialState = {
   stores: [],
@@ -24,9 +24,18 @@ const medicineNearestStore = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getNearestStores.fulfilled, (state, action) => {
-      state.stores = action.payload;
-    });
+    builder
+      .addCase(getNearestStores.fulfilled, (state, action) => {
+        state.stores = action.payload;
+        state.loading = false;
+      })
+      .addCase(getNearestStores.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getNearestStores.rejected, (state, action) => {
+        state.error = action.payload || "Failed to load stores";
+        state.loading = false;
+      });
   },
 });
 

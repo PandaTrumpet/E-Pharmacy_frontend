@@ -1,7 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
-export const getNearestStores = createAsyncThunk(
+import { IStores } from "./slice";
+export const getNearestStores = createAsyncThunk<
+  IStores[],
+  void,
+  { rejectValue: string }
+>(
   "nearestStores/getNearestStores",
 
   async (_, thunkAPI) => {

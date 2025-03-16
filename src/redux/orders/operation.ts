@@ -63,18 +63,19 @@ export const updateOrder = createAsyncThunk<
   }
 });
 
-export const checkoutCart = createAsyncThunk<void, IOrdersCheckout>(
-  "orders/checkoutCart",
-  async (data, thunkAPI) => {
-    try {
-      await api.post("/cart/checkout", data);
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "An unexpected error occurred";
-      return thunkAPI.rejectWithValue(errorMessage);
-    }
+export const checkoutCart = createAsyncThunk<
+  void,
+  IOrdersCheckout,
+  { rejectValue: string }
+>("orders/checkoutCart", async (data, thunkAPI) => {
+  try {
+    await api.post("/cart/checkout", data);
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unexpected error occurred";
+    return thunkAPI.rejectWithValue(errorMessage);
   }
-);
+});
 export const getOrders = createAsyncThunk<
   IOrders,
   void,
@@ -100,15 +101,16 @@ export const getOrders = createAsyncThunk<
   }
 });
 
-export const deleteOrder = createAsyncThunk<void, { orderId: string }>(
-  "orders/deleteOrder",
-  async (orderId, thunkAPI) => {
-    try {
-      await api.post("/cart/delete", orderId);
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : "An unexpected error occurred";
-      return thunkAPI.rejectWithValue(errorMessage);
-    }
+export const deleteOrder = createAsyncThunk<
+  void,
+  { orderId: string },
+  { rejectValue: string }
+>("orders/deleteOrder", async (orderId, thunkAPI) => {
+  try {
+    await api.post("/cart/delete", orderId);
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unexpected error occurred";
+    return thunkAPI.rejectWithValue(errorMessage);
   }
-);
+});

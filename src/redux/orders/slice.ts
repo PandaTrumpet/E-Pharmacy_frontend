@@ -54,7 +54,16 @@ const orders = createSlice({
     builder
       .addCase(updateOrder.fulfilled, (state, action) => {
         state.orders = action.payload;
+        state.loading = false;
       })
+      .addCase(updateOrder.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateOrder.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to update!";
+      })
+
       .addCase(getOrders.fulfilled, (state, action) => {
         state.orders = action.payload;
         state.loading = false;
@@ -62,10 +71,21 @@ const orders = createSlice({
       .addCase(getOrders.pending, (state) => {
         state.loading = true;
       })
+      .addCase(getOrders.rejected, (state, acion) => {
+        state.loading = false;
+        state.error = acion.payload || "Failed to get orders";
+      })
       .addCase(checkoutCart.fulfilled, (state) => {
         state.orders = {} as IOrders;
         localStorage.removeItem("orderId");
         state.loading = false;
+      })
+      .addCase(checkoutCart.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(checkoutCart.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "Failed to checkout!";
       });
   },
 });
