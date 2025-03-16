@@ -52,52 +52,11 @@ export const updateOrder = createAsyncThunk<
   try {
     const response = await api.put("/cart/update", data);
 
-    // if (response.data && response.data.data) {
-    //   return response.data.data as IOrders;
-    // }
-    // console.log(response.data);
-    // console.log(response.data.data.orders);
+    localStorage.setItem("orderId", response.data.data.orders._id);
+    console.log(response.data.data.orders);
 
     return response.data.data.orders;
     // return thunkAPI.rejectWithValue("Invalid response from server");
-  } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "An unexpected error occurred";
-    return thunkAPI.rejectWithValue(errorMessage);
-  }
-});
-
-// export const getOrders = createAsyncThunk(
-//   "orders/getOrders",
-//   async (_, thunkAPI) => {
-//     try {
-//       const response = await api.get("/cart");
-//       console.log(response.data.data[0]);
-
-//       return response.data.data[0];
-//     } catch (error) {
-//       const errorMessage =
-//         error instanceof Error ? error.message : "An unexpected error occurred";
-//       return thunkAPI.rejectWithValue(errorMessage);
-//     }
-//   }
-// );
-
-export const getOrders = createAsyncThunk<
-  IOrders,
-  void,
-  { rejectValue: string }
->("orders/getOrders", async (_, thunkAPI) => {
-  try {
-    const response = await api.get("/cart");
-    const orders = response.data.data;
-
-    if (!Array.isArray(orders) || orders.length === 0) {
-      return thunkAPI.rejectWithValue("No orders found");
-    }
-    // console.log(response.data.data[0]);
-
-    return orders[0];
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "An unexpected error occurred";
@@ -109,6 +68,7 @@ export const checkoutCart = createAsyncThunk<void, IOrdersCheckout>(
   "orders/checkoutCart",
   async (data, thunkAPI) => {
     try {
+      localStorage.removeItem("orderId");
       await api.post("/cart/checkout", data);
     } catch (error) {
       const errorMessage =
@@ -117,11 +77,36 @@ export const checkoutCart = createAsyncThunk<void, IOrdersCheckout>(
     }
   }
 );
+export const getOrders = createAsyncThunk<
+  IOrders,
+  void,
+  { rejectValue: string }
+>("orders/getOrders", async (_, thunkAPI) => {
+  try {
+    const response = await api.get("/cart");
+    const orders = response.data.data;
+
+    const orderId = localStorage.getItem("orderId");
+
+    const getOrder = orders.find((el: any) => el._id === orderId);
+    console.log(getOrder);
+    if (getOrder) {
+      return getOrder;
+    } else {
+      return;
+    }
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "An unexpected error occurred";
+    return thunkAPI.rejectWithValue(errorMessage);
+  }
+});
+
 export const deleteOrder = createAsyncThunk<void, { orderId: string }>(
   "orders/deleteOrder",
   async (orderId, thunkAPI) => {
     try {
-      console.log(orderId);
+      // console.log(orderId);
 
       await api.post("/cart/delete", orderId);
     } catch (error) {

@@ -19,14 +19,14 @@ interface IOrders {
 }
 
 interface IInitialState {
-  orderId: string;
+  // orderId: string;
   orders: IOrders;
   loading: boolean;
   error: string | null;
 }
 
 const initialState: IInitialState = {
-  orderId: "",
+  // orderId: "",
   orders: {
     paymentMethod: "",
     status: "",
@@ -65,7 +65,8 @@ const orders = createSlice({
         state.loading = true;
       })
       .addCase(checkoutCart.fulfilled, (state) => {
-        // state.orders = {};
+        state.orders = {} as IOrders;
+        localStorage.removeItem("orderId");
         state.loading = false;
       });
   },

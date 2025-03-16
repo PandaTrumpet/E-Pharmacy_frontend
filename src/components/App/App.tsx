@@ -25,11 +25,14 @@ import { totalProductsCountSelector } from "../../redux/orders/selector";
 
 const App = () => {
   const modalTypeSelect = useSelector(selectModalType);
-  const totalProducts = useSelector(totalProductsCountSelector);
+  const totalProducts = useSelector(totalProductsCountSelector) || 0;
 
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(getOrders());
+    const orderId = localStorage.getItem("orderId");
+    if (orderId) {
+      dispatch(getOrders());
+    }
   }, [dispatch, totalProducts]);
   return (
     <>

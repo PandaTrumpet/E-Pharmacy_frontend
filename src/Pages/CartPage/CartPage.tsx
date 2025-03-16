@@ -29,7 +29,7 @@ interface FormData {
 
 const CartPage = () => {
   const order = useSelector(selectOrder);
-  const orderId = order._id;
+  const orderId = localStorage.getItem("orderId");
   console.log(orderId);
 
   const count = useSelector(totalProductsCountSelector);
@@ -51,6 +51,8 @@ const CartPage = () => {
 
   const onSubmit = (data: FormData) => {
     navigate("/");
+    localStorage.removeItem("orderId");
+    // dispatch(deleteOrder({ _id: orderId }));
     dispatch(
       checkoutCart({
         name: data.name,
@@ -65,7 +67,6 @@ const CartPage = () => {
         totalProducts: count,
       })
     );
-    dispatch(deleteOrder({ _id: orderId }));
   };
 
   const dispatch = useDispatch<AppDispatch>();
