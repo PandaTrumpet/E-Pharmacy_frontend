@@ -21,6 +21,7 @@ import { getOrders } from "../../redux/orders/operation";
 import { totalProductsCountSelector } from "../../redux/orders/selector";
 import { isLoggedSelector } from "../../redux/auth/selector";
 import PrivateRoute from "../PrivateRoute";
+import NotFoundPage from "../../Pages/NotFoundPage";
 
 const App = () => {
   const isLogged = useSelector(isLoggedSelector);
@@ -55,7 +56,7 @@ const App = () => {
               <PrivateRoute component={<CartPage />} redirectTo="/login" />
             }
           />
-          {/* <Route path="/cart" element={<CartPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
 
         <Route path="/login" element={<LoginPage />} />
