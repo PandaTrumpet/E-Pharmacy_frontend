@@ -20,7 +20,8 @@ import fotoPill from "../../images/productPill.jpg";
 import { isLoggedSelector } from "../../redux/auth/selector";
 import { openModalWindow } from "../../redux/modal/slice";
 import { IProduct } from "../../redux/products/slice";
-
+import { FaAngleUp } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 const MedicinePage = () => {
   const isLogged = useSelector(isLoggedSelector);
   const dispatch = useDispatch<AppDispatch>();
@@ -34,6 +35,7 @@ const MedicinePage = () => {
   };
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterOpen, setFilterOpen] = useState(false);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -103,18 +105,25 @@ const MedicinePage = () => {
 
       <div className={css.filterMainCont}>
         <div className={css.filterInputs}>
-          <select
-            className={css.filterSelect}
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Medicine">Medicine</option>
-            <option value="Heart">Heart</option>
-            <option value="Head">Head</option>
-            <option value="Hand">Hand</option>
-            <option value="Leg">Leg</option>
-          </select>
+          <div className={css.selectCont}>
+            <select
+              className={css.filterSelect}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              onClick={() => setFilterOpen((prev) => !prev)}
+              onBlur={() => setFilterOpen(false)}
+            >
+              <option value="">All Categories</option>
+              <option value="Medicine">Medicine</option>
+              <option value="Heart">Heart</option>
+              <option value="Head">Head</option>
+              <option value="Hand">Hand</option>
+              <option value="Leg">Leg</option>
+            </select>
+            <div className={css.upCont}>
+              {filterOpen ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+          </div>
 
           <div className={css.searchInputCont}>
             <input
