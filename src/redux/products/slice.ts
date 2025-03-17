@@ -9,7 +9,7 @@ export interface IProduct {
   quantity: number;
   price: number;
   category: string;
-  remove: boolean;
+  isRemoved: boolean;
 }
 
 interface IInitialState {

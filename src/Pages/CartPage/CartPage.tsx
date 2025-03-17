@@ -79,7 +79,7 @@ const CartPage = () => {
       updateOrder({
         ordersProduct: [
           {
-            remove: true,
+            isRemoved: true,
             _id,
             name: "",
             photo: "",
