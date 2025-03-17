@@ -229,7 +229,7 @@ const Header = () => {
             {isLogged ? (
               <ul className={css.registerList}>
                 <li>
-                  <button className={css.logoutBtn}>Log out</button>
+                  <button className={css.logoutBtnMobile}>Log out</button>
                 </li>{" "}
               </ul>
             ) : (
