@@ -90,7 +90,9 @@ const CartPage = () => {
           },
         ],
       })
-    );
+    )
+      .unwrap()
+      .then(() => toast.success("Product removed from cart!"));
   };
 
   return (

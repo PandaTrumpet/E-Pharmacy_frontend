@@ -48,18 +48,18 @@ const Footer = () => {
             </ul>
             <ul className={css.socialLinksList}>
               <li>
-                <a href="">
-                  <img src={facebook} alt="" />
+                <a href="https://www.facebook.com/goITclub/">
+                  <img src={facebook} alt="Facebook icon" />
                 </a>
               </li>
               <li>
-                <a href="">
-                  <img src={instagramIcon} alt="" />
+                <a href="https://www.instagram.com/goitclub/">
+                  <img src={instagramIcon} alt="instagram Icon" />
                 </a>
               </li>
               <li>
-                <a href="">
-                  <img src={youtube} alt="" />
+                <a href="https://www.youtube.com/c/GoIT">
+                  <img src={youtube} alt="youtube icon" />
                 </a>
               </li>
             </ul>
@@ -70,7 +70,7 @@ const Footer = () => {
           <ul className={css.privacyList}>
             <li>
               <p className={css.privacyItem}>
-                © E-Pharmacy 2023. All Rights Reserved
+                © E-Pharmacy 2025. All Rights Reserved
               </p>
             </li>
             <li>

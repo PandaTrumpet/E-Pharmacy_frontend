@@ -37,7 +37,6 @@ const MedicineStorePage = () => {
                   <div className={css.flexCont}>
                     <div>
                       <p className={css.storeName}>
-                        {" "}
                         <EllipsisText text={store.name} length={23} />
                       </p>
                       <ul className={css.infoList}>

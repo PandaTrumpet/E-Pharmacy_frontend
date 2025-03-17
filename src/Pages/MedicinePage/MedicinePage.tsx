@@ -31,7 +31,9 @@ const MedicinePage = () => {
       dispatch(openModalWindow({ modalType: "login" }));
       return;
     }
-    dispatch(updateOrder({ ordersProduct: [product] }));
+    dispatch(updateOrder({ ordersProduct: [product] }))
+      .unwrap()
+      .then(() => toast.success("Product added to cart!"));
   };
 
   const [searchTerm, setSearchTerm] = useState("");
