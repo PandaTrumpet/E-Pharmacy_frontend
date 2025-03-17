@@ -112,8 +112,15 @@
 @media (min-width:1440px) {
     .sectionCont {
         padding-top: 60px;
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 128px;
+        padding-right: 128px;
         min-width: 1440px;
+    }
+
+    .reviewsList {
+
+        gap: 28px;
+        overflow-x: auto;
+
     }
 }
