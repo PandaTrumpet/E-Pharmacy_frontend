@@ -103,7 +103,7 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background-color: rgba(89, 177, 122, 0.1);
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,6 +119,7 @@
     font-size: 0.875rem;
     line-height: 1.4;
     color: #59b17a;
+
 }
 
 .mobileMenuIcon {
