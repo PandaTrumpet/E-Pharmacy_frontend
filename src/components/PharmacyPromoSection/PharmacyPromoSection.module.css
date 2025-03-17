@@ -1,11 +1,12 @@
 .mainSection {
     /* padding-top: 20px; */
     /* padding-bottom: 20px; */
-    max-width: 375px;
+    width: 375px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
 }
+
 
 .mainPromoSectionCont {
     padding: 20px;
@@ -73,7 +74,7 @@
 /* Feature section */
 .featureSection {
     margin: 0 auto;
-    max-width: 375px;
+    min-width: 375px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 40px;
@@ -132,7 +133,7 @@
     .mainSection {
         padding-left: 32px;
         padding-right: 32px;
-        min-width: 768px;
+        width: 768px;
     }
 
     .mainPromoSectionCont {
@@ -181,7 +182,7 @@
         padding-left: 32px;
         padding-right: 32px;
         padding-bottom: 60px;
-        max-width: 768px;
+        min-width: 768px;
     }
 
     .foto {
@@ -204,7 +205,7 @@
     .mainSection {
         padding-left: 100px;
         padding-right: 100px;
-        min-width: 1440px;
+        width: 1440px;
     }
 
     .mainPromoSectionCont {

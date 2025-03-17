@@ -1,13 +1,16 @@
 .mainSection {
-    max-width: 375px;
+    min-width: 375px;
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
     margin: 0 auto;
+
+
 }
 
 .titleCont {
+
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -37,6 +40,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
 }
 
 .storeItem {
@@ -191,7 +195,6 @@
 }
 
 
-
 @media (min-width:768px) {
     .mainSection {
         padding-top: 60px;
@@ -226,6 +229,7 @@
         flex-wrap: wrap;
         gap: 16px;
         row-gap: 32px;
+        justify-content: center;
     }
 
     .storeItem {
@@ -280,7 +284,7 @@
     .mainSection {
         padding-left: 100px;
         padding-right: 100px;
-        min-width: 1440px;
+        max-width: 1440px;
     }
 
     .storeList {
