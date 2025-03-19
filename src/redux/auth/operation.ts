@@ -32,7 +32,6 @@ export const registerUser = createAsyncThunk<
 >("auth/registerUser", async (data, thunkAPI) => {
   try {
     const response = await api.post(`${baseUrl}/user/register`, data);
-    console.log(response.data.data);
 
     return response.data.data;
   } catch (error) {

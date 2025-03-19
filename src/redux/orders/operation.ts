@@ -53,7 +53,6 @@ export const updateOrder = createAsyncThunk<
     const response = await api.put("/cart/update", data);
 
     localStorage.setItem("orderId", response.data.data.orders._id);
-    console.log(response.data.data.orders);
 
     return response.data.data.orders;
   } catch (error) {
@@ -88,7 +87,7 @@ export const getOrders = createAsyncThunk<
     const orderId = localStorage.getItem("orderId");
 
     const getOrder = orders.find((el: IOrders) => el._id === orderId);
-    console.log(getOrder);
+
     if (getOrder) {
       return getOrder;
     } else {
