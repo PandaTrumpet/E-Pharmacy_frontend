@@ -182,14 +182,16 @@ const MedicinePage = () => {
             </li>
           ))
         ) : (
-          <p className={css.noResults}>No products found</p>
+          <li>
+            <p className={css.noResults}>No products found</p>
+          </li>
         )}
       </ul>
 
       {totalProducts > limit && (
         <ul className={css.paginationList}>
-          <ul className={css.leftPaginationList}>
-            <li>
+          <li className={css.leftPaginationList}>
+            <div>
               <button
                 disabled={page === 1}
                 className={css.paginationBtn}
@@ -197,8 +199,8 @@ const MedicinePage = () => {
               >
                 <FaAnglesLeft />
               </button>
-            </li>
-            <li>
+            </div>
+            <div>
               <button
                 className={css.paginationBtn}
                 onClick={handlePrevPage}
@@ -206,11 +208,11 @@ const MedicinePage = () => {
               >
                 <FaChevronLeft />
               </button>
-            </li>
-          </ul>
-          <ul className={css.middlePaginationList}>
+            </div>
+          </li>
+          <li className={css.middlePaginationList}>
             {getVisiblePages().map((p) => (
-              <li key={p}>
+              <div key={p}>
                 <button
                   className={clsx(css.paginationBtnNumber, {
                     [css.activePage]: page === p,
@@ -219,11 +221,11 @@ const MedicinePage = () => {
                 >
                   {p}
                 </button>
-              </li>
+              </div>
             ))}
-          </ul>
-          <ul className={css.rightPaginationList}>
-            <li>
+          </li>
+          <li className={css.rightPaginationList}>
+            <div>
               <button
                 className={css.paginationBtn}
                 onClick={handleNextPage}
@@ -231,8 +233,8 @@ const MedicinePage = () => {
               >
                 <FaChevronRight />
               </button>
-            </li>
-            <li>
+            </div>
+            <div>
               <button
                 className={css.paginationBtn}
                 disabled={page >= totalPages}
@@ -240,8 +242,8 @@ const MedicinePage = () => {
               >
                 <FaAnglesRight />
               </button>
-            </li>
-          </ul>
+            </div>
+          </li>
         </ul>
       )}
     </section>

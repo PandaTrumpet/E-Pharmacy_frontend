@@ -8,7 +8,7 @@ import { AppDispatch } from "../../redux/store";
 import { updateOrder } from "../../redux/orders/operation";
 import { IProduct } from "../../redux/products/slice";
 import EllipsisText from "react-ellipsis-text";
-import fotoPill from "../../images/productPill.jpg";
+
 interface CartItemProps {
   product: IProduct;
   onRemove: (_id: string) => void;
@@ -45,7 +45,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, onRemove }) => {
     <li className={css.productItem}>
       <div
         className={css.fotoCont}
-        style={{ backgroundImage: `url(${fotoPill})` }}
+        style={{ backgroundImage: `url(${product.photo})` }}
       ></div>
       <div className={css.detailsCont}>
         <div className={css.infoCont}>

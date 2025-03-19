@@ -15,7 +15,6 @@ import toast from "react-hot-toast";
 import { openModalWindow } from "../../redux/modal/slice";
 import { addedProductsSelector } from "../../redux/orders/selector";
 import { IProduct } from "../../redux/products/slice";
-import productPill from "../../images/productPill.jpg";
 const ProductPage = () => {
   const addedProducts = useSelector(addedProductsSelector);
   const { productId } = useParams<{ productId: string }>();
@@ -88,7 +87,7 @@ const ProductPage = () => {
         <div className={css.productCont}>
           <div
             className={css.productImage}
-            style={{ backgroundImage: `url(${productPill})` }}
+            style={{ backgroundImage: `url(${productById?.photo})` }}
           ></div>
 
           <div className={css.productDescriptionCont}>
